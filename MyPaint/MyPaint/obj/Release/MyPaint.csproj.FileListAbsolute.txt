@@ -1,0 +1,8 @@
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\bin\Release\MyPaint.exe
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\bin\Release\MyPaint.pdb
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Release\MyPaint.Form1.resources
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Release\MyPaint.Properties.Resources.resources
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Release\MyPaint.csproj.GenerateResource.Cache
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Release\MyPaint.exe.licenses
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Release\MyPaint.exe
+C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Release\MyPaint.pdb
