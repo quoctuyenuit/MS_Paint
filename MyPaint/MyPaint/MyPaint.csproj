@@ -74,6 +74,7 @@
     <Compile Include="Shape\DrawingSetting.cs" />
     <Compile Include="Shape\Ellipse.cs" />
     <Compile Include="Shape\FreePen.cs" />
+    <Compile Include="Shape\ImageShape.cs" />
     <Compile Include="Shape\LineShape.cs" />
     <Compile Include="Shape\Rectangle.cs" />
     <Compile Include="Shape\Shape.cs" />

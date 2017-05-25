@@ -13,19 +13,12 @@ namespace MyPaint
 {
     public partial class Form1 : Form
     {
-         Drawing.MainPanel DrawingSpace;
+        Drawing.MainPanel DrawingSpace;
         private Stack<Bitmap> listBack;
 
         void init()
         {
-            WindowState = FormWindowState.Maximized;
-            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
-            Tools.PaintTools.DrawingColor = Color.Black;
-            Tools.PaintTools.PenWidth = 1;
-            Tools.PaintTools.DrawingBrush = Brushes.Yellow;
-            Tools.PaintTools.BrushStatus = Tools.PaintTools.EnumBrushStatus.UnFill;
-
-            this.DrawingSpace = new Drawing.MainPanel(new Size(1600,1000));
+            this.DrawingSpace = new Drawing.MainPanel(this.Size);
             this.DrawingSpace.BackColor = System.Drawing.Color.White;
             this.DrawingSpace.Cursor = System.Windows.Forms.Cursors.Cross;
             this.DrawingSpace.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -33,12 +26,22 @@ namespace MyPaint
             this.DrawingSpace.Name = "mainPanel1";
             this.DrawingSpace.TabIndex = 1;
             this.FreeSpace.Controls.Add(this.DrawingSpace);
-
-
         }
         public Form1()
         {
             InitializeComponent();
+
+            WindowState = FormWindowState.Maximized;
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
+            Tools.PaintTools.DrawingColor = Color.Black;
+            Tools.PaintTools.PenWidth = 1;
+            Tools.PaintTools.DrawingBrush = Brushes.Yellow;
+            Tools.PaintTools.BrushStatus = Tools.PaintTools.EnumBrushStatus.UnFill;
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             init();
         }
 
@@ -53,9 +56,15 @@ namespace MyPaint
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     Bitmap bmp = new Bitmap(dlg.FileName);
-                    this.DrawingSpace.Image = bmp;
+
+                    this.DrawingSpace.DrawingPanel.ActiveShape = new Shape.ImageShape(this.DrawingSpace.Size, new Point(0, 0), bmp);
+
+                    this.DrawingSpace.DrawingPanel.updateContent();
+
+                    this.DrawingSpace.Refresh();
                 }
             }
+            
         }
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -81,7 +90,7 @@ namespace MyPaint
 
         private void btnPenColor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using(ColorDialog dlg = new ColorDialog())
+            using (ColorDialog dlg = new ColorDialog())
             {
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -287,8 +296,28 @@ namespace MyPaint
                 Tools.PaintTools.DrawingColor = this.colorStatus.BackColor;
         }
 
-      
+        private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.DrawingSpace.ListBack.Count == 0)
+                return;
+            Bitmap bmp = this.DrawingSpace.ListBack.Pop();
+            
+            this.DrawingSpace.ContentPanel.Content = bmp;
+            this.DrawingSpace.DrawingPanel.Content = new Bitmap(bmp.Size.Width, bmp.Size.Height);
+            this.DrawingSpace.Refresh();
+        }
 
-        
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.DrawingSpace.embed();
+            if (e.KeyData == (Keys.Control|Keys.Z))
+                btnUndo_ItemClick(null, null);
+        }
+
+       
+
+
+
+
     }
 }

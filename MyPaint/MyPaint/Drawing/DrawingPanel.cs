@@ -54,7 +54,7 @@ namespace MyPaint.Drawing
             this.MouseUp += DrawingPanel_MouseUp;
         }
 
-        private void updateContent()
+        public void updateContent()
         {
             content = activeShape.CurrentShape;
             if (activeShape.DoneStatus)

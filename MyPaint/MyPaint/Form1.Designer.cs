@@ -66,6 +66,7 @@
             this.menuSubItemHatchBrush = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.FreeSpace = new System.Windows.Forms.Panel();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit1)).BeginInit();
@@ -90,9 +91,10 @@
             this.size3,
             this.size4,
             this.freePen,
-            this.eraser});
+            this.eraser,
+            this.btnUndo});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 16;
+            this.ribbonControl1.MaxItemId = 17;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -228,6 +230,7 @@
             // 
             // ribbonPageGroup1
             // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnUndo);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnOpen);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSave);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -403,6 +406,15 @@
             this.FreeSpace.Size = new System.Drawing.Size(1388, 497);
             this.FreeSpace.TabIndex = 3;
             // 
+            // btnUndo
+            // 
+            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Glyph = ((System.Drawing.Image)(resources.GetObject("btnUndo.Glyph")));
+            this.btnUndo.Id = 16;
+            this.btnUndo.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnUndo.LargeGlyph")));
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -414,6 +426,8 @@
             this.Controls.Add(this.ribbonControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit1)).EndInit();
@@ -463,5 +477,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemDelete;
         private System.Windows.Forms.Panel FreeSpace;
         private DevExpress.XtraBars.BarCheckItem eraser;
+        private DevExpress.XtraBars.BarButtonItem btnUndo;
     }
 }

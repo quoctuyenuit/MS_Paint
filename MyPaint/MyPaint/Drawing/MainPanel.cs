@@ -31,20 +31,31 @@ namespace MyPaint.Drawing
             get { return contentPanel; }
             set { contentPanel = value; }
         }
-        public MainPanel(Size size)
+        public MainPanel(Size _size)
         {
-            this.Size = size;
+            this.Size = _size;
             this.MouseClick += MainPanel_MouseClick;
             this.MouseDown += MainPanel_MouseDown;
             this.MouseUp += MainPanel_MouseUp;
             this.MouseMove += MainPanel_MouseMove;
             this.Paint += MainPanel_Paint;
             this.Resize += MainPanel_Resize;
-            this.drawingPanel = new DrawingPanel(this, this.Size);
-            this.contentPanel = new ContentPanel(this.Size.Width, this.Size.Height);
+            this.drawingPanel = new DrawingPanel(this, _size);
+            this.contentPanel = new ContentPanel(_size.Width, _size.Height);
             this.listBack = new Stack<Bitmap>();
             this.DoubleBuffered = true;
             this.Cursor = Cursors.Cross;
+        }
+
+        public void initContent(Size _size)
+        {
+            
+        }
+
+        
+        protected override void OnValidated(EventArgs e)
+        {
+           
         }
 
         void MainPanel_Resize(object sender, EventArgs e)
@@ -85,7 +96,10 @@ namespace MyPaint.Drawing
 
         public void embedDrawing2Content()
         {
-            Bitmap bmp = contentPanel.Content.Clone(new Rectangle(0,0, this.Size.Width, this.Size.Height), this.contentPanel.Content.PixelFormat);//new Bitmap(this.Size.Width, this.Size.Height);
+            Bitmap bmp = this.Image.Clone(new Rectangle(0, 0, this.Image.Width, this.Image.Height), this.Image.PixelFormat);
+            
+            
+
            
             this.listBack.Push(bmp);
 
