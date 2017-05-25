@@ -20,7 +20,7 @@ namespace MyPaint
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            Application.Run(new MyPaintForm());
+            Application.Run(new Form1());
         }
     }
 }

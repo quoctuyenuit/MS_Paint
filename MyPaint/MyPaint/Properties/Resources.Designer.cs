@@ -103,6 +103,26 @@ namespace MyPaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap draw_eraser_icon {
+            get {
+                object obj = ResourceManager.GetObject("draw-eraser-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Editing_Line_Width_icon {
+            get {
+                object obj = ResourceManager.GetObject("Editing-Line-Width-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ellipse1 {
             get {
                 object obj = ResourceManager.GetObject("ellipse1", resourceCulture);
@@ -166,6 +186,46 @@ namespace MyPaint.Properties {
         internal static System.Drawing.Bitmap saveall_32x32 {
             get {
                 object obj = ResourceManager.GetObject("saveall_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap size1 {
+            get {
+                object obj = ResourceManager.GetObject("size1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap size2 {
+            get {
+                object obj = ResourceManager.GetObject("size2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap size3 {
+            get {
+                object obj = ResourceManager.GetObject("size3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap size4 {
+            get {
+                object obj = ResourceManager.GetObject("size4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -6,5 +6,5 @@ C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\bin\Deb
 C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\bin\Debug\MyPaint.pdb
 C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Debug\MyPaint.exe
 C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Debug\MyPaint.pdb
-C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Debug\MyPaint.MyPaintForm.resources
 C:\Users\QuocTuyen\documents\visual studio 2013\Projects\MyPaint\MyPaint\obj\Debug\MyPaint.FillEvent.HatchBrush.resources
+C:\Users\QuocTuyen\Documents\Visual Studio 2013\Projects\MyPaint\MyPaint\obj\Debug\MyPaint.Form1.resources

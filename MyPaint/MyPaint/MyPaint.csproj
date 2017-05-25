@@ -63,11 +63,11 @@
     <Compile Include="FillEvent\HatchBrush.Designer.cs">
       <DependentUpon>HatchBrush.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyPaintForm.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyPaintForm.Designer.cs">
-      <DependentUpon>MyPaintForm.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="FillEvent\HatchBrush.resx">
       <DependentUpon>HatchBrush.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyPaintForm.resx">
-      <DependentUpon>MyPaintForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -148,6 +148,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\textureBrushIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editing-Line-Width-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\size1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\size2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\size3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\size4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\draw-eraser-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
