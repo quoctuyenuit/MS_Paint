@@ -30,20 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem3 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem4 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem5 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem6 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem7 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem8 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnOpen = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
-            this.lineShape = new DevExpress.XtraBars.BarCheckItem();
-            this.rectangleShape = new DevExpress.XtraBars.BarCheckItem();
-            this.ellipseShape = new DevExpress.XtraBars.BarCheckItem();
             this.btnPenColor = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.size1 = new DevExpress.XtraBars.BarButtonItem();
             this.size2 = new DevExpress.XtraBars.BarButtonItem();
             this.size3 = new DevExpress.XtraBars.BarButtonItem();
             this.size4 = new DevExpress.XtraBars.BarButtonItem();
-            this.freePen = new DevExpress.XtraBars.BarCheckItem();
-            this.eraser = new DevExpress.XtraBars.BarCheckItem();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonGalleryBarItem1 = new DevExpress.XtraBars.RibbonGalleryBarItem();
+            this.btnEraser = new DevExpress.XtraBars.BarSubItem();
+            this.btnEraser3px = new DevExpress.XtraBars.BarCheckItem();
+            this.btnEraser5px = new DevExpress.XtraBars.BarCheckItem();
+            this.btnEraser10px = new DevExpress.XtraBars.BarCheckItem();
+            this.btnEraser20px = new DevExpress.XtraBars.BarCheckItem();
+            this.btnNew = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShape = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -66,7 +78,6 @@
             this.menuSubItemHatchBrush = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.FreeSpace = new System.Windows.Forms.Panel();
-            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit1)).BeginInit();
@@ -81,20 +92,22 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.btnOpen,
             this.btnSave,
-            this.lineShape,
-            this.rectangleShape,
-            this.ellipseShape,
             this.btnPenColor,
             this.barSubItem1,
             this.size1,
             this.size2,
             this.size3,
             this.size4,
-            this.freePen,
-            this.eraser,
-            this.btnUndo});
+            this.btnUndo,
+            this.ribbonGalleryBarItem1,
+            this.btnEraser,
+            this.btnEraser3px,
+            this.btnEraser5px,
+            this.btnEraser10px,
+            this.btnEraser20px,
+            this.btnNew});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 17;
+            this.ribbonControl1.MaxItemId = 29;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -122,30 +135,6 @@
             this.btnSave.LargeGlyph = global::MyPaint.Properties.Resources.saveall_32x32;
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
-            // 
-            // lineShape
-            // 
-            this.lineShape.Caption = "Line";
-            this.lineShape.Glyph = global::MyPaint.Properties.Resources.line_copy;
-            this.lineShape.Id = 4;
-            this.lineShape.Name = "lineShape";
-            this.lineShape.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.lineShape_ItemClick);
-            // 
-            // rectangleShape
-            // 
-            this.rectangleShape.Caption = "Rectangle";
-            this.rectangleShape.Glyph = global::MyPaint.Properties.Resources.rectangle;
-            this.rectangleShape.Id = 5;
-            this.rectangleShape.Name = "rectangleShape";
-            this.rectangleShape.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.rectangleShape_ItemClick);
-            // 
-            // ellipseShape
-            // 
-            this.ellipseShape.Caption = "Ellipse";
-            this.ellipseShape.Glyph = global::MyPaint.Properties.Resources.ellipse1;
-            this.ellipseShape.Id = 6;
-            this.ellipseShape.Name = "ellipseShape";
-            this.ellipseShape.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ellipseShape_ItemClick);
             // 
             // btnPenColor
             // 
@@ -200,24 +189,111 @@
             this.size4.Name = "size4";
             this.size4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.size4_ItemClick);
             // 
-            // freePen
+            // btnUndo
             // 
-            this.freePen.BindableChecked = true;
-            this.freePen.Caption = "Free Pen";
-            this.freePen.Checked = true;
-            this.freePen.Id = 14;
-            this.freePen.LargeGlyph = global::MyPaint.Properties.Resources.Brushes_icon;
-            this.freePen.Name = "freePen";
-            this.freePen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.freePen_ItemClick);
+            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Glyph = ((System.Drawing.Image)(resources.GetObject("btnUndo.Glyph")));
+            this.btnUndo.Id = 16;
+            this.btnUndo.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnUndo.LargeGlyph")));
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
             // 
-            // eraser
+            // ribbonGalleryBarItem1
             // 
-            this.eraser.Caption = "Eraser";
-            this.eraser.Id = 15;
-            this.eraser.LargeGlyph = global::MyPaint.Properties.Resources.draw_eraser_icon;
-            this.eraser.Name = "eraser";
-            this.eraser.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.eraser_CheckedChanged);
-            this.eraser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.eraser_ItemClick);
+            this.ribbonGalleryBarItem1.AllowRightClickInMenu = false;
+            this.ribbonGalleryBarItem1.Caption = "ribbonGalleryBarItem1";
+            // 
+            // 
+            // 
+            galleryItemGroup1.Caption = "groupShape";
+            galleryItem1.Caption = "pencil";
+            galleryItem1.Checked = true;
+            galleryItem1.Image = global::MyPaint.Properties.Resources.pencil_icon;
+            galleryItem2.Caption = "line";
+            galleryItem2.Image = global::MyPaint.Properties.Resources.Line_icon;
+            galleryItem3.Caption = "rectangle";
+            galleryItem3.Image = global::MyPaint.Properties.Resources.rectangle_icon;
+            galleryItem4.Caption = "ellipse";
+            galleryItem4.Image = global::MyPaint.Properties.Resources.ellipse_icon;
+            galleryItem5.Caption = "triangle";
+            galleryItem5.Image = global::MyPaint.Properties.Resources.Triangle_icon;
+            galleryItem6.Caption = "diamond";
+            galleryItem6.Image = ((System.Drawing.Image)(resources.GetObject("galleryItem6.Image")));
+            galleryItem7.Caption = "pentagon";
+            galleryItem7.Image = global::MyPaint.Properties.Resources.pentagon_icon;
+            galleryItem8.Caption = "downArrow";
+            galleryItem8.Image = global::MyPaint.Properties.Resources.down_icon;
+            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem1,
+            galleryItem2,
+            galleryItem3,
+            galleryItem4,
+            galleryItem5,
+            galleryItem6,
+            galleryItem7,
+            galleryItem8});
+            this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            galleryItemGroup1});
+            this.ribbonGalleryBarItem1.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
+            this.ribbonGalleryBarItem1.Id = 22;
+            this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
+            this.ribbonGalleryBarItem1.GalleryItemClick += new DevExpress.XtraBars.Ribbon.GalleryItemClickEventHandler(this.ribbonGalleryBarItem1_GalleryItemClick);
+            // 
+            // btnEraser
+            // 
+            this.btnEraser.Caption = "Eraser";
+            this.btnEraser.Id = 23;
+            this.btnEraser.LargeGlyph = global::MyPaint.Properties.Resources.draw_eraser_icon;
+            this.btnEraser.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnEraser3px),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnEraser5px),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnEraser10px),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnEraser20px)});
+            this.btnEraser.Name = "btnEraser";
+            // 
+            // btnEraser3px
+            // 
+            this.btnEraser3px.Caption = "3 px";
+            this.btnEraser3px.CheckStyle = DevExpress.XtraBars.BarCheckStyles.Radio;
+            this.btnEraser3px.Glyph = global::MyPaint.Properties.Resources.eraserIcon;
+            this.btnEraser3px.Id = 24;
+            this.btnEraser3px.Name = "btnEraser3px";
+            this.btnEraser3px.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEraser3px_ItemClick);
+            // 
+            // btnEraser5px
+            // 
+            this.btnEraser5px.Caption = "5 px";
+            this.btnEraser5px.CheckStyle = DevExpress.XtraBars.BarCheckStyles.Radio;
+            this.btnEraser5px.Glyph = global::MyPaint.Properties.Resources.eraserIcon;
+            this.btnEraser5px.Id = 25;
+            this.btnEraser5px.Name = "btnEraser5px";
+            this.btnEraser5px.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEraser5px_ItemClick);
+            // 
+            // btnEraser10px
+            // 
+            this.btnEraser10px.Caption = "10 px";
+            this.btnEraser10px.CheckStyle = DevExpress.XtraBars.BarCheckStyles.Radio;
+            this.btnEraser10px.Glyph = global::MyPaint.Properties.Resources.eraserIcon;
+            this.btnEraser10px.Id = 26;
+            this.btnEraser10px.Name = "btnEraser10px";
+            this.btnEraser10px.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEraser10px_ItemClick);
+            // 
+            // btnEraser20px
+            // 
+            this.btnEraser20px.Caption = "20 px";
+            this.btnEraser20px.Glyph = global::MyPaint.Properties.Resources.eraserIcon;
+            this.btnEraser20px.Id = 27;
+            this.btnEraser20px.Name = "btnEraser20px";
+            this.btnEraser20px.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEraser20px_ItemClick);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Caption = "New";
+            this.btnNew.Glyph = ((System.Drawing.Image)(resources.GetObject("btnNew.Glyph")));
+            this.btnNew.Id = 28;
+            this.btnNew.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnNew.LargeGlyph")));
+            this.btnNew.Name = "btnNew";
+            this.btnNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -230,19 +306,17 @@
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnUndo);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnNew);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnOpen);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSave);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "File";
             // 
             // groupShape
             // 
-            this.groupShape.ItemLinks.Add(this.lineShape);
-            this.groupShape.ItemLinks.Add(this.rectangleShape);
-            this.groupShape.ItemLinks.Add(this.ellipseShape);
-            this.groupShape.ItemLinks.Add(this.freePen);
-            this.groupShape.ItemLinks.Add(this.eraser);
+            this.groupShape.ItemLinks.Add(this.btnUndo);
+            this.groupShape.ItemLinks.Add(this.btnEraser);
+            this.groupShape.ItemLinks.Add(this.ribbonGalleryBarItem1);
             this.groupShape.Name = "groupShape";
             this.groupShape.Text = "Shape";
             // 
@@ -397,6 +471,7 @@
             this.menuItemDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.menuItemDelete.Size = new System.Drawing.Size(200, 26);
             this.menuItemDelete.Text = "Delete";
+            this.menuItemDelete.Click += new System.EventHandler(this.menuItemDelete_Click);
             // 
             // FreeSpace
             // 
@@ -406,26 +481,17 @@
             this.FreeSpace.Size = new System.Drawing.Size(1388, 497);
             this.FreeSpace.TabIndex = 3;
             // 
-            // btnUndo
-            // 
-            this.btnUndo.Caption = "Undo";
-            this.btnUndo.Glyph = ((System.Drawing.Image)(resources.GetObject("btnUndo.Glyph")));
-            this.btnUndo.Id = 16;
-            this.btnUndo.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnUndo.LargeGlyph")));
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1388, 672);
-            this.ContextMenuStrip = this.contextMenu;
             this.Controls.Add(this.FreeSpace);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
@@ -446,9 +512,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem btnOpen;
         private DevExpress.XtraBars.BarButtonItem btnSave;
-        private DevExpress.XtraBars.BarCheckItem lineShape;
-        private DevExpress.XtraBars.BarCheckItem rectangleShape;
-        private DevExpress.XtraBars.BarCheckItem ellipseShape;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEdit1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupShape;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup settingGroup;
@@ -464,7 +527,6 @@
         private DevExpress.XtraBars.BarButtonItem size2;
         private DevExpress.XtraBars.BarButtonItem size3;
         private DevExpress.XtraBars.BarButtonItem size4;
-        private DevExpress.XtraBars.BarCheckItem freePen;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem menuItemOpenFile;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaveFile;
@@ -476,7 +538,13 @@
         private System.Windows.Forms.ToolStripMenuItem menuSubItemHatchBrush;
         private System.Windows.Forms.ToolStripMenuItem menuItemDelete;
         private System.Windows.Forms.Panel FreeSpace;
-        private DevExpress.XtraBars.BarCheckItem eraser;
         private DevExpress.XtraBars.BarButtonItem btnUndo;
+        private DevExpress.XtraBars.RibbonGalleryBarItem ribbonGalleryBarItem1;
+        private DevExpress.XtraBars.BarSubItem btnEraser;
+        private DevExpress.XtraBars.BarCheckItem btnEraser3px;
+        private DevExpress.XtraBars.BarCheckItem btnEraser5px;
+        private DevExpress.XtraBars.BarCheckItem btnEraser10px;
+        private DevExpress.XtraBars.BarCheckItem btnEraser20px;
+        private DevExpress.XtraBars.BarButtonItem btnNew;
     }
 }

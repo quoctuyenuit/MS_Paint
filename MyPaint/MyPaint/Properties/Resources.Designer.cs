@@ -103,6 +103,26 @@ namespace MyPaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap diamondIcon {
+            get {
+                object obj = ResourceManager.GetObject("diamondIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap down_icon {
+            get {
+                object obj = ResourceManager.GetObject("down-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap draw_eraser_icon {
             get {
                 object obj = ResourceManager.GetObject("draw-eraser-icon", resourceCulture);
@@ -123,9 +143,19 @@ namespace MyPaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ellipse1 {
+        internal static System.Drawing.Bitmap ellipse_icon {
             get {
-                object obj = ResourceManager.GetObject("ellipse1", resourceCulture);
+                object obj = ResourceManager.GetObject("ellipse-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eraserIcon {
+            get {
+                object obj = ResourceManager.GetObject("eraserIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +173,19 @@ namespace MyPaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap line_copy {
+        internal static System.Drawing.Bitmap Line_icon {
             get {
-                object obj = ResourceManager.GetObject("line copy", resourceCulture);
+                object obj = ResourceManager.GetObject("Line-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Line_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Line-icon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +213,29 @@ namespace MyPaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rectangle {
+        internal static System.Drawing.Bitmap pencil_icon {
             get {
-                object obj = ResourceManager.GetObject("rectangle", resourceCulture);
+                object obj = ResourceManager.GetObject("pencil-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pentagon_icon {
+            get {
+                object obj = ResourceManager.GetObject("pentagon-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle_icon {
+            get {
+                object obj = ResourceManager.GetObject("rectangle-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +306,16 @@ namespace MyPaint.Properties {
         internal static System.Drawing.Bitmap textureBrushIcon {
             get {
                 object obj = ResourceManager.GetObject("textureBrushIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Triangle_icon {
+            get {
+                object obj = ResourceManager.GetObject("Triangle-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

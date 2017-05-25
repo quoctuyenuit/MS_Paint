@@ -14,7 +14,6 @@ namespace MyPaint
     public partial class Form1 : Form
     {
         Drawing.MainPanel DrawingSpace;
-        private Stack<Bitmap> listBack;
 
         void init()
         {
@@ -25,6 +24,7 @@ namespace MyPaint
             this.DrawingSpace.Location = new System.Drawing.Point(0, 150);
             this.DrawingSpace.Name = "mainPanel1";
             this.DrawingSpace.TabIndex = 1;
+            this.DrawingSpace.ContextMenuStrip = contextMenu;
             this.FreeSpace.Controls.Add(this.DrawingSpace);
         }
         public Form1()
@@ -43,6 +43,42 @@ namespace MyPaint
         private void Form1_Load(object sender, EventArgs e)
         {
             init();
+        }
+
+        #region File
+
+        private void btnNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.DrawingSpace.ListBack.Count == 0)
+                return;
+
+            DialogResult result = MessageBox.Show("Do you want to save change to Untitled?", "Paint", MessageBoxButtons.YesNoCancel);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                btnSave_ItemClick(null, null);
+
+                this.DrawingSpace.embed();
+
+                Bitmap bmp = this.DrawingSpace.ListBack.Last();
+
+                this.DrawingSpace.ContentPanel.Content = bmp;
+                this.DrawingSpace.DrawingPanel.Content = new Bitmap(bmp.Size.Width, bmp.Size.Height);
+                this.DrawingSpace.Refresh();
+                this.DrawingSpace.ListBack.Clear();
+            }
+            else if (result == System.Windows.Forms.DialogResult.No)
+            {
+                this.DrawingSpace.embed();
+
+                Bitmap bmp = this.DrawingSpace.ListBack.Last();
+
+                this.DrawingSpace.ContentPanel.Content = bmp;
+                this.DrawingSpace.DrawingPanel.Content = new Bitmap(bmp.Size.Width, bmp.Size.Height);
+                this.DrawingSpace.Refresh();
+                this.DrawingSpace.ListBack.Clear();
+            }
+            else
+                return;
         }
 
         private void btnOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -72,6 +108,7 @@ namespace MyPaint
             this.DrawingSpace.embed();
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "JPEG(.jpg)|*.jpg|PNG(.png)|*.png|Bitmap(.bmp)|*.bmp";
+            dlg.FileName = "Untitled";
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Bitmap bmp = new Bitmap(this.DrawingSpace.Image);
@@ -87,6 +124,10 @@ namespace MyPaint
                 }
             }
         }
+
+        #endregion
+
+        #region Setting Color and Pen width
 
         private void btnPenColor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -124,86 +165,9 @@ namespace MyPaint
             this.penWitdhStatus.Text = "7 px";
         }
 
-        private void lineShape_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (lineShape.Checked)
-            {
-                Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Line;
-                lineShape.Checked = true;
-            }
-            else
-                lineShape.Checked = true;
+        #endregion
 
-            ellipseShape.Checked = false;
-            rectangleShape.Checked = false;
-            freePen.Checked = false;
-            eraser.Checked = false;
-        }
-
-        private void rectangleShape_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (rectangleShape.Checked)
-            {
-                Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Rectangle;
-                lineShape.Checked = true;
-            }
-            else
-                rectangleShape.Checked = true;
-            ellipseShape.Checked = false;
-            lineShape.Checked = false;
-            freePen.Checked = false;
-            eraser.Checked = false;
-        }
-
-        private void ellipseShape_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (ellipseShape.Checked)
-            {
-                Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Ellipse;
-                lineShape.Checked = true;
-            }
-            else
-                ellipseShape.Checked = true;
-
-            rectangleShape.Checked = false;
-            lineShape.Checked = false;
-            freePen.Checked = false;
-            eraser.Checked = false;
-        }
-
-        private void freePen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (freePen.Checked)
-            {
-                Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
-                lineShape.Checked = true;
-            }
-            else
-                freePen.Checked = true;
-
-            rectangleShape.Checked = false;
-            lineShape.Checked = false;
-            ellipseShape.Checked = false;
-            eraser.Checked = false;
-        }
-
-        private void eraser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Tools.PaintTools.DrawingColor = Color.White;
-            if (eraser.Checked)
-            {
-                Tools.PaintTools.DrawingColor = Color.White;
-                Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
-                lineShape.Checked = true;
-            }
-            else
-                eraser.Checked = true;
-
-            rectangleShape.Checked = false;
-            lineShape.Checked = false;
-            ellipseShape.Checked = false;
-            freePen.Checked = false;
-        }
+        #region ContextMenuStrip Event
 
         private void contextMenu_Opening(object sender, CancelEventArgs e)
         {
@@ -290,14 +254,16 @@ namespace MyPaint
             Tools.PaintTools.BrushStatus = Tools.PaintTools.EnumBrushStatus.Fill;
         }
 
-        private void eraser_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void menuItemDelete_Click(object sender, EventArgs e)
         {
-            if (eraser.Checked == false)
-                Tools.PaintTools.DrawingColor = this.colorStatus.BackColor;
+            btnUndo_ItemClick(null, null);
         }
+
+        #endregion
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.DrawingSpace.embed();
             if (this.DrawingSpace.ListBack.Count == 0)
                 return;
             Bitmap bmp = this.DrawingSpace.ListBack.Pop();
@@ -309,10 +275,146 @@ namespace MyPaint
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            this.DrawingSpace.embed();
             if (e.KeyData == (Keys.Control|Keys.Z))
                 btnUndo_ItemClick(null, null);
+            else if(e.KeyData == (Keys.Control|Keys.O))
+                btnOpen_ItemClick(null, null);
+            else if(e.KeyData ==(Keys.Control|Keys.S))
+                btnSave_ItemClick(null, null);
         }
+
+        private void ribbonGalleryBarItem1_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
+        {
+            switch(e.Item.Caption)
+            {
+                case "pencil":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
+                        break;
+                    }
+                case "line":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Line;
+                        break;
+                    }
+                case "rectangle":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Rectangle;
+                        break;
+                    }
+                case "ellipse":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Ellipse;
+                        break;
+                    }
+                case "triangle":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Triangle;
+                        break;
+                    }
+                case "diamond":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Diamond;
+                        break;
+                    }
+                case "pentagon":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Pentagon;
+                        break;
+                    }
+                case "downArrow":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.DownArrow;
+                        break;
+                    }
+            }
+        }
+
+        private void btnEraser3px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Tools.PaintTools.EraserWidth = 3;
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
+
+            btnEraser5px.Checked = false;
+            btnEraser10px.Checked = false;
+            btnEraser20px.Checked = false;
+
+            if(!btnEraser3px.Checked)
+            {
+                btnEraser3px.Checked = true;
+            }
+        }
+
+        private void btnEraser5px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Tools.PaintTools.EraserWidth = 5;
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
+
+            btnEraser3px.Checked = false;
+            btnEraser10px.Checked = false;
+            btnEraser20px.Checked = false;
+
+            if (!btnEraser5px.Checked)
+            {
+                btnEraser5px.Checked = true;
+            }
+        }
+
+        private void btnEraser10px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Tools.PaintTools.EraserWidth = 10;
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
+
+            btnEraser3px.Checked = false;
+            btnEraser5px.Checked = false;
+            btnEraser20px.Checked = false;
+
+            if (!btnEraser10px.Checked)
+            {
+                btnEraser10px.Checked = true;
+            }
+
+        }
+
+        private void btnEraser20px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Tools.PaintTools.EraserWidth = 20;
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
+
+            btnEraser3px.Checked = false;
+            btnEraser5px.Checked = false;
+            btnEraser10px.Checked = false;
+
+            if (!btnEraser20px.Checked)
+            {
+                btnEraser20px.Checked = true;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DrawingSpace.ListBack.Count == 0)
+                return;
+
+            DialogResult result = MessageBox.Show("Do you want to save change to Untitled?", "Paint", MessageBoxButtons.YesNoCancel);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                btnSave_ItemClick(null, null);
+                Application.Exit();
+                this.Close();
+            }
+            else if (result == System.Windows.Forms.DialogResult.No)
+            {
+                Application.Exit();
+                this.Close();
+            }
+            else
+                e.Cancel = true;
+        }
+
+        
+
+        
 
        
 

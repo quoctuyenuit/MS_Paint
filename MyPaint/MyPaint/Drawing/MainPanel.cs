@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,9 @@ namespace MyPaint.Drawing
         public MainPanel(Size _size)
         {
             this.Size = _size;
+
+            
+
             this.MouseClick += MainPanel_MouseClick;
             this.MouseDown += MainPanel_MouseDown;
             this.MouseUp += MainPanel_MouseUp;
@@ -45,17 +49,6 @@ namespace MyPaint.Drawing
             this.listBack = new Stack<Bitmap>();
             this.DoubleBuffered = true;
             this.Cursor = Cursors.Cross;
-        }
-
-        public void initContent(Size _size)
-        {
-            
-        }
-
-        
-        protected override void OnValidated(EventArgs e)
-        {
-           
         }
 
         void MainPanel_Resize(object sender, EventArgs e)

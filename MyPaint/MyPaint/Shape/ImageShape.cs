@@ -65,49 +65,35 @@ namespace MyPaint.Shape
             {
                 #region MouseStatus = Down
 
-                switch (drawingStatus)
+                if (drawingStatus == DrawingSetting.DrawingStatus.Free)
                 {
-                    case DrawingSetting.DrawingStatus.PreDraw:
-                        {
-                            this.drawingStatus = DrawingSetting.DrawingStatus.Draw;
-                            this.drawingMode = DrawingSetting.DrawingMode.DownRight;
-                            this.pivotLeftBound = leftBound;
-                            this.pivotRightBound = rightBound;
-                            this.pivotUpperBound = upperBound;
-                            this.pivotLowerBound = lowerBound;
-                            break;
-                        }
-                    case DrawingSetting.DrawingStatus.Free:
-                        {
-                            this.drawingStatus = DrawingSetting.DrawingStatus.Adjust;
-                            this.drawingMode = checkDrawingMode(_curPoint);
-                            this.pivotLeftBound = leftBound;
-                            this.pivotRightBound = rightBound;
-                            this.pivotUpperBound = upperBound;
-                            this.pivotLowerBound = lowerBound;
-                            this.pivotMove = _curPoint;
-                            switch (drawingMode)
+                    this.drawingStatus = DrawingSetting.DrawingStatus.Adjust;
+                    this.drawingMode = checkDrawingMode(_curPoint);
+                    this.pivotLeftBound = leftBound;
+                    this.pivotRightBound = rightBound;
+                    this.pivotUpperBound = upperBound;
+                    this.pivotLowerBound = lowerBound;
+                    this.pivotMove = _curPoint;
+                    switch (drawingMode)
+                    {
+                        case DrawingSetting.DrawingMode.Normal:
                             {
-                                case DrawingSetting.DrawingMode.Normal:
-                                    {
-                                        this.doneStatus = true;
-                                        break;
-                                    }
-                                case DrawingSetting.DrawingMode.UpLeft:
-                                case DrawingSetting.DrawingMode.UpRight:
-                                case DrawingSetting.DrawingMode.DownLeft:
-                                case DrawingSetting.DrawingMode.DownRight:
-                                case DrawingSetting.DrawingMode.VerUp:
-                                case DrawingSetting.DrawingMode.VerDown:
-                                case DrawingSetting.DrawingMode.HonRight:
-                                case DrawingSetting.DrawingMode.HonLeft:
-                                    {
-                                        this.drawingStatus = DrawingSetting.DrawingStatus.Adjust;
-                                        break;
-                                    }
+                                this.doneStatus = true;
+                                break;
                             }
-                            break;
-                        }
+                        case DrawingSetting.DrawingMode.UpLeft:
+                        case DrawingSetting.DrawingMode.UpRight:
+                        case DrawingSetting.DrawingMode.DownLeft:
+                        case DrawingSetting.DrawingMode.DownRight:
+                        case DrawingSetting.DrawingMode.VerUp:
+                        case DrawingSetting.DrawingMode.VerDown:
+                        case DrawingSetting.DrawingMode.HonRight:
+                        case DrawingSetting.DrawingMode.HonLeft:
+                            {
+                                this.drawingStatus = DrawingSetting.DrawingStatus.Adjust;
+                                break;
+                            }
+                    }
                 }
                 #endregion
             }

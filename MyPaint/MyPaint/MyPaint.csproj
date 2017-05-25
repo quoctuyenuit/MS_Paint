@@ -71,13 +71,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shape\DiamondShape.cs" />
+    <Compile Include="Shape\DownArowShape.cs" />
     <Compile Include="Shape\DrawingSetting.cs" />
     <Compile Include="Shape\Ellipse.cs" />
+    <Compile Include="Shape\Eraser.cs" />
     <Compile Include="Shape\FreePen.cs" />
     <Compile Include="Shape\ImageShape.cs" />
     <Compile Include="Shape\LineShape.cs" />
+    <Compile Include="Shape\PentagonShape.cs" />
     <Compile Include="Shape\Rectangle.cs" />
     <Compile Include="Shape\Shape.cs" />
+    <Compile Include="Shape\TriangleShape.cs" />
     <Compile Include="Tools\DrawingProperties.cs" />
     <Compile Include="Tools\MainPaneMouseEventArgs.cs" />
     <Compile Include="Tools\PaintTools.cs" />
@@ -110,15 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Brushes-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\line copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rectangle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ellipse1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\open2_32x32.png" />
@@ -167,6 +163,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\draw-eraser-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diamondIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ellipse-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pentagon-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Triangle-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eraserIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

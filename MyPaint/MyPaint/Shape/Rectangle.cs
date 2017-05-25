@@ -11,21 +11,21 @@ namespace MyPaint.Shape
     class RectangleShape : Shape
     {
         private const int HANDLE_POINT_RADIUS = 2;
-        private int leftBound;
-        private int rightBound;
-        private int upperBound;
-        private int lowerBound;
-        private bool doneStatus;
+        protected int leftBound;
+        protected int rightBound;
+        protected int upperBound;
+        protected int lowerBound;
+        protected bool doneStatus;
         //Mốc bên trái cùng khi chỉnh sửa
-        private int pivotLeftBound;
+        protected int pivotLeftBound;
         //Mốc bên phải cùng khi chỉnh sửa
-        private int pivotRightBound;
+        protected int pivotRightBound;
         //Mốc bên trên cùng khi chỉnh sửa
-        private int pivotUpperBound;
+        protected int pivotUpperBound;
         //Mốc bên dưới cùng khi chỉnh sửa
-        private int pivotLowerBound;
+        protected int pivotLowerBound;
         //Điểm mốc vị trí chuột khi chỉnh sửa hình
-        private Point pivotMove;
+        protected Point pivotMove;
 
         public RectangleShape(Size size, Point p)
             : base(size)
@@ -173,6 +173,14 @@ namespace MyPaint.Shape
             {
                 #region Set DrawingStatus After MouseUp
 
+                if (leftBound == rightBound && upperBound == lowerBound)
+                {
+                    drawingStatus = DrawingSetting.DrawingStatus.PreDraw;
+                    drawingMode = DrawingSetting.DrawingMode.Normal;
+                    this.doneStatus = true;
+                    return;
+                }
+
                 switch (drawingStatus)
                 {
                     case DrawingSetting.DrawingStatus.Draw:
@@ -229,7 +237,7 @@ namespace MyPaint.Shape
         }
         #endregion
 
-        private DrawingSetting.DrawingMode checkDrawingMode(Point _curPoint)
+        protected DrawingSetting.DrawingMode checkDrawingMode(Point _curPoint)
         {
             int X = _curPoint.X;
             int Y = _curPoint.Y;
@@ -267,9 +275,8 @@ namespace MyPaint.Shape
 
         protected Bitmap generateImage()
         {
-           
-
             Bitmap bmp = new Bitmap(surfaceSize.Width, surfaceSize.Height);
+            
             if (leftBound == rightBound && upperBound == lowerBound)
                 return bmp;
             
@@ -285,11 +292,11 @@ namespace MyPaint.Shape
                         {
                             Pen pen = genratePen(this.drawingProperties);
                             
-                            gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                            gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
 
                             if(Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
                             {
-                                gr.FillRectangle(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                                gr.FillRectangle(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             }
                         }
                         break;
@@ -300,11 +307,11 @@ namespace MyPaint.Shape
                         using (Graphics gr = Graphics.FromImage(bmp))
                         {
                             Pen pen = genratePen(this.drawingProperties);
-                            gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                            gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             
                             if (Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
                             {
-                                gr.FillRectangle(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 2, lowerBound - upperBound + 2));
+                                gr.FillRectangle(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             }
                         }
                         break;
@@ -318,7 +325,7 @@ namespace MyPaint.Shape
                     Pen pen = new Pen(Color.White);
                     pen.Width = 0.1f;
                     pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-                    gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                    gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
 
                     int[] xArr = new int[3];
                     int[] yArr = new int[3];
@@ -344,13 +351,12 @@ namespace MyPaint.Shape
         }
 
         //Hàm vẽ các điểm xung quay để chỉnh sửa
-        private void drawEditPoint(int x, int y, Graphics gr)
+        protected void drawEditPoint(int x, int y, Graphics gr)
         {
             int left = x - HANDLE_POINT_RADIUS;
             int upper = y - HANDLE_POINT_RADIUS;
             gr.FillRectangle(Brushes.White, left, upper, 2 * HANDLE_POINT_RADIUS, 2 * HANDLE_POINT_RADIUS);
             gr.DrawRectangle(Pens.Black, left, upper, 2 * HANDLE_POINT_RADIUS, 2 * HANDLE_POINT_RADIUS);
-
         }
 
     }

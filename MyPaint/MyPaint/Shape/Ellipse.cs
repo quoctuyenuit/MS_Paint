@@ -11,7 +11,7 @@ namespace MyPaint.Shape
     class EllipseShape : Shape
     {
 
-          private const int HANDLE_POINT_RADIUS = 3;
+          private const int HANDLE_POINT_RADIUS = 2;
         private int leftBound;
         private int rightBound;
         private int upperBound;
@@ -269,7 +269,10 @@ namespace MyPaint.Shape
         private Bitmap generateImage()
         {
             Bitmap bmp = new Bitmap(surfaceSize.Width, surfaceSize.Height);
-            
+
+            if (leftBound == rightBound && upperBound == lowerBound)
+                return bmp;
+
             switch (drawingStatus)
             {
                 case DrawingSetting.DrawingStatus.PreDraw:
@@ -282,10 +285,10 @@ namespace MyPaint.Shape
                         {
                             gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                             Pen pen = genratePen(this.drawingProperties);
-                            gr.DrawEllipse(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                            gr.DrawEllipse(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             if (Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
                             {
-                                gr.FillEllipse(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 2, lowerBound - upperBound + 2));
+                                gr.FillEllipse(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             }
                         }
                         break;
@@ -297,10 +300,10 @@ namespace MyPaint.Shape
                         {
                             gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                             Pen pen = genratePen(this.drawingProperties);
-                            gr.DrawEllipse(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                            gr.DrawEllipse(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             if (Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
                             {
-                                gr.FillEllipse(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 2, lowerBound - upperBound + 2));
+                                gr.FillEllipse(drawingProperties.ActiveBrush, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
                             }
                         }
                         break;

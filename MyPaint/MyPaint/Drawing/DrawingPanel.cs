@@ -10,7 +10,6 @@ namespace MyPaint.Drawing
     class DrawingPanel
     {
         public delegate void MainPaneMouseEventHandler(object sender, Tools.MainPaneMouseEventArgs e);
-        public event MainPaneMouseEventHandler MouseClick;
         public event MainPaneMouseEventHandler MouseDown;
         public event MainPaneMouseEventHandler MouseMove;
         public event MainPaneMouseEventHandler MouseUp;
@@ -48,7 +47,6 @@ namespace MyPaint.Drawing
             this.paneSize = size;
             this.content = new Bitmap(this.paneSize.Width, this.paneSize.Height);
             this.content.MakeTransparent();
-            this.MouseClick+=DrawingPanel_MouseClick;
             this.MouseDown += DrawingPanel_MouseDown;
             this.MouseMove += DrawingPanel_MouseMove;
             this.MouseUp += DrawingPanel_MouseUp;
@@ -111,6 +109,31 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.LineShape(this.paneSize, e.Location);
                             break;
                         }
+                    case Tools.PaintTools.EnumDrawingTool.Triangle:
+                        {
+                            activeShape = new Shape.TriangleShape(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.Diamond:
+                        {
+                            activeShape = new Shape.DiamondShape(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.Pentagon:
+                        {
+                            activeShape = new Shape.PentagonShape(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.DownArrow:
+                        {
+                            activeShape = new Shape.DownArowShape(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.Eraser:
+                        {
+                            activeShape = new Shape.Eraser(this.paneSize, e.Location);
+                            break;
+                        }
                 }
             }
             Tools.DrawingProperties props = getDrawingProperties();
@@ -148,10 +171,6 @@ namespace MyPaint.Drawing
                 else
                      mainPanel.Cursor = activeShape.checkCursor(e.Location);
             }
-        }
-
-        private void DrawingPanel_MouseClick(object sender, Tools.MainPaneMouseEventArgs e)
-        {
         }
 
         public void doMouseUp(object sender, Tools.MainPaneMouseEventArgs e)
