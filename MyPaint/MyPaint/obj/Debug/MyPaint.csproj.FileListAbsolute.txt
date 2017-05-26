@@ -18,3 +18,4 @@ C:\Users\QuocTuyen\Documents\MS_Paint\MyPaint\MyPaint\obj\Debug\MyPaint.Form1.re
 C:\Users\QuocTuyen\Documents\MS_Paint\MyPaint\MyPaint\obj\Debug\MyPaint.Properties.Resources.resources
 C:\Users\QuocTuyen\Documents\MS_Paint\MyPaint\MyPaint\obj\Debug\MyPaint.csproj.GenerateResource.Cache
 C:\Users\QuocTuyen\Documents\MS_Paint\MyPaint\MyPaint\obj\Debug\MyPaint.exe.licenses
+C:\Users\QuocTuyen\Documents\MS_Paint\MyPaint\MyPaint\obj\Debug\MyPaint.FillEvent.LinearGradientBrush.resources

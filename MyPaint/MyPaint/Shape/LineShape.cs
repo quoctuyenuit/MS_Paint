@@ -185,33 +185,17 @@ namespace MyPaint.Shape
         private Bitmap generateImage()
         {
             Bitmap bmp = new Bitmap(surfaceSize.Width, surfaceSize.Height);
-            switch (drawingStatus)
+
+            if (drawingStatus == DrawingSetting.DrawingStatus.PreDraw)
+                return bmp;
+            else
             {
-                case DrawingSetting.DrawingStatus.PreDraw:
-                    {
-                        break;
-                    }
-                case DrawingSetting.DrawingStatus.Draw:
-                    {
-                        using (Graphics gr = Graphics.FromImage(bmp))
-                        {
-                            gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                            Pen pen = genratePen(this.drawingProperties);
-                            gr.DrawLine(pen, pointAhead, pointTail);
-                        }
-                        break;
-                    }
-                case DrawingSetting.DrawingStatus.Free:
-                case DrawingSetting.DrawingStatus.Adjust:
-                    {
-                        using (Graphics gr = Graphics.FromImage(bmp))
-                        {
-                            gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                            Pen pen = genratePen(this.drawingProperties);
-                            gr.DrawLine(pen, pointAhead, pointTail);
-                        }
-                        break;
-                    }
+                using (Graphics gr = Graphics.FromImage(bmp))
+                {
+                    gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    Pen pen = genratePen(this.drawingProperties);
+                    gr.DrawLine(pen, pointAhead, pointTail);
+                }
             }
 
             if (!doneStatus)

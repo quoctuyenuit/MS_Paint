@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPaint.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,9 +35,13 @@ namespace MyPaint
             WindowState = FormWindowState.Maximized;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
             Tools.PaintTools.DrawingColor = Color.Black;
+            Tools.PaintTools.ColorHatchBrush1 = Color.White;
+            Tools.PaintTools.ColorHatchBrush2 = Color.White;
+            Tools.PaintTools.HatchStyleBrush = HatchStyle.BackwardDiagonal;
             Tools.PaintTools.PenWidth = 1;
             Tools.PaintTools.DrawingBrush = Brushes.Yellow;
             Tools.PaintTools.BrushStatus = Tools.PaintTools.EnumBrushStatus.UnFill;
+            this.selectColor.EditValue = Color.Black;
 
         }
 
@@ -129,18 +134,6 @@ namespace MyPaint
 
         #region Setting Color and Pen width
 
-        private void btnPenColor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (ColorDialog dlg = new ColorDialog())
-            {
-                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    this.colorStatus.BackColor = dlg.Color;
-                    Tools.PaintTools.DrawingColor = dlg.Color;
-                }
-            }
-        }
-
         private void size1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Tools.PaintTools.PenWidth = 1;
@@ -211,11 +204,13 @@ namespace MyPaint
 
         private void menuSubItemLinearGradientBrush_Click(object sender, EventArgs e)
         {
-            using (FillEvent.HatchBrush dlg = new FillEvent.HatchBrush())
+            using (FillEvent.LinearGradientBrush dlg = new FillEvent.LinearGradientBrush())
             {
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     LinearGradientBrush _brush = new LinearGradientBrush(new Point(0, 10), new Point(200, 10), dlg._ForeColor, dlg._BackColor);
+                    Tools.PaintTools.ColorHatchBrush1 = dlg._BackColor;
+                    Tools.PaintTools.ColorHatchBrush2 = dlg._ForeColor;
                     Tools.PaintTools.DrawingBrush = _brush;
                 }
             }
@@ -246,8 +241,11 @@ namespace MyPaint
             {
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    HatchStyle style = HatchStyle.BackwardDiagonal;
+                    HatchStyle style = dlg.HatchStyle;
                     HatchBrush _brush = new HatchBrush(style, dlg._ForeColor, dlg._BackColor);
+                    Tools.PaintTools.ColorHatchBrush1 = dlg._BackColor;
+                    Tools.PaintTools.ColorHatchBrush2 = dlg._ForeColor;
+                    Tools.PaintTools.HatchStyleBrush = dlg.HatchStyle;
                     Tools.PaintTools.DrawingBrush = _brush;
                 }
             }
@@ -273,6 +271,14 @@ namespace MyPaint
             this.DrawingSpace.Refresh();
         }
 
+        private void btnSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Select;
+            this.currentShape.Image = Resources.selectIcon;
+            if (!btnSelect.Checked)
+                btnSelect.Checked = true;
+        }
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == (Keys.Control|Keys.Z))
@@ -285,46 +291,79 @@ namespace MyPaint
 
         private void ribbonGalleryBarItem1_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
+            btnSelect.Checked = false;
             switch(e.Item.Caption)
             {
                 case "pencil":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
+                        this.currentShape.Image = Resources.pencil_icon;
                         break;
                     }
                 case "line":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Line;
+                        this.currentShape.Image = Resources.Line_icon;
                         break;
                     }
                 case "rectangle":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Rectangle;
+                        this.currentShape.Image = Resources.rectangle_icon;
                         break;
                     }
                 case "ellipse":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Ellipse;
+                        this.currentShape.Image = Resources.ellipse_icon;
                         break;
                     }
                 case "triangle":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Triangle;
+                        this.currentShape.Image = Resources.Triangle_icon;
+                        break;
+                    }
+                case "squareTriangle":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.SquareTriangle;
+                        this.currentShape.Image = Resources.squareTriangleIcon;
                         break;
                     }
                 case "diamond":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Diamond;
+                        this.currentShape.Image = Resources.diamondIcon;
                         break;
                     }
                 case "pentagon":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Pentagon;
+                        this.currentShape.Image = Resources.pentagon_icon;
                         break;
                     }
                 case "downArrow":
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.DownArrow;
+                        this.currentShape.Image = Resources.down_icon;
+                        break;
+                    }
+                case "upArrow":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.UpArrow;
+                        this.currentShape.Image = Resources.down_icon;
+                        break;
+                    }
+                case "rightArrow":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.RightArrow;
+                        this.currentShape.Image = Resources.down_icon;
+                        break;
+                    }
+                case "leftArrow":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.LeftArrow;
+                        this.currentShape.Image = Resources.down_icon;
                         break;
                     }
             }
@@ -332,6 +371,7 @@ namespace MyPaint
 
         private void btnEraser3px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            btnSelect.Checked = false;
             Tools.PaintTools.EraserWidth = 3;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
 
@@ -343,10 +383,12 @@ namespace MyPaint
             {
                 btnEraser3px.Checked = true;
             }
+            this.currentShape.Image = Resources.eraserIcon;
         }
 
         private void btnEraser5px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            btnSelect.Checked = false;
             Tools.PaintTools.EraserWidth = 5;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
 
@@ -358,10 +400,12 @@ namespace MyPaint
             {
                 btnEraser5px.Checked = true;
             }
+            this.currentShape.Image = Resources.eraserIcon;
         }
 
         private void btnEraser10px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            btnSelect.Checked = false;
             Tools.PaintTools.EraserWidth = 10;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
 
@@ -373,11 +417,13 @@ namespace MyPaint
             {
                 btnEraser10px.Checked = true;
             }
+            this.currentShape.Image = Resources.eraserIcon;
 
         }
 
         private void btnEraser20px_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            btnSelect.Checked = false;
             Tools.PaintTools.EraserWidth = 20;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
 
@@ -389,6 +435,7 @@ namespace MyPaint
             {
                 btnEraser20px.Checked = true;
             }
+            this.currentShape.Image = Resources.eraserIcon;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -400,26 +447,22 @@ namespace MyPaint
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 btnSave_ItemClick(null, null);
-                Application.Exit();
-                this.Close();
+                return;
             }
             else if (result == System.Windows.Forms.DialogResult.No)
             {
-                Application.Exit();
-                this.Close();
+                return;
             }
             else
                 e.Cancel = true;
         }
 
-        
+        private void selectColor_EditValueChanged(object sender, EventArgs e)
+        {
+            Tools.PaintTools.DrawingColor = (Color)selectColor.EditValue;
+            this.colorStatus.BackColor = Tools.PaintTools.DrawingColor;
+        }
 
         
-
-       
-
-
-
-
     }
 }

@@ -91,9 +91,6 @@ namespace MyPaint.Drawing
         {
             Bitmap bmp = this.Image.Clone(new Rectangle(0, 0, this.Image.Width, this.Image.Height), this.Image.PixelFormat);
             
-            
-
-           
             this.listBack.Push(bmp);
 
             contentPanel.embedImage(drawingPanel.Content);

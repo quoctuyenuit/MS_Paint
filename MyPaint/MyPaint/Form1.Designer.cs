@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
@@ -39,10 +38,13 @@
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem6 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem7 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem8 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem9 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem10 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem11 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem12 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnOpen = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
-            this.btnPenColor = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.size1 = new DevExpress.XtraBars.BarButtonItem();
             this.size2 = new DevExpress.XtraBars.BarButtonItem();
@@ -56,18 +58,24 @@
             this.btnEraser10px = new DevExpress.XtraBars.BarCheckItem();
             this.btnEraser20px = new DevExpress.XtraBars.BarCheckItem();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
+            this.selectColor = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemColorPickEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
+            this.btnSelect = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShape = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.settingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemColorPickEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.colorStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.penWitdhStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentShape = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip();
             this.menuItemOpenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemFill = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,8 +87,10 @@
             this.menuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.FreeSpace = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +102,6 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.btnOpen,
             this.btnSave,
-            this.btnPenColor,
             this.barSubItem1,
             this.size1,
             this.size2,
@@ -105,15 +114,19 @@
             this.btnEraser5px,
             this.btnEraser10px,
             this.btnEraser20px,
-            this.btnNew});
+            this.btnNew,
+            this.selectColor,
+            this.btnSelect});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 29;
+            this.ribbonControl1.MaxItemId = 33;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
-            this.repositoryItemColorPickEdit1});
+            this.repositoryItemColorPickEdit1,
+            this.repositoryItemColorPickEdit2,
+            this.repositoryItemComboBox2});
             this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.ShowOnMultiplePages;
             this.ribbonControl1.ShowQatLocationSelector = false;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
@@ -135,15 +148,6 @@
             this.btnSave.LargeGlyph = global::MyPaint.Properties.Resources.saveall_32x32;
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
-            // 
-            // btnPenColor
-            // 
-            this.btnPenColor.Caption = "Color";
-            this.btnPenColor.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPenColor.Glyph")));
-            this.btnPenColor.Id = 8;
-            this.btnPenColor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPenColor.LargeGlyph")));
-            this.btnPenColor.Name = "btnPenColor";
-            this.btnPenColor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPenColor_ItemClick);
             // 
             // barSubItem1
             // 
@@ -218,11 +222,19 @@
             galleryItem5.Caption = "triangle";
             galleryItem5.Image = global::MyPaint.Properties.Resources.Triangle_icon;
             galleryItem6.Caption = "diamond";
-            galleryItem6.Image = ((System.Drawing.Image)(resources.GetObject("galleryItem6.Image")));
+            galleryItem6.Image = global::MyPaint.Properties.Resources.diamondIcon;
             galleryItem7.Caption = "pentagon";
             galleryItem7.Image = global::MyPaint.Properties.Resources.pentagon_icon;
-            galleryItem8.Caption = "downArrow";
-            galleryItem8.Image = global::MyPaint.Properties.Resources.down_icon;
+            galleryItem8.Caption = "squareTriangle";
+            galleryItem8.Image = global::MyPaint.Properties.Resources.squareTriangleIcon;
+            galleryItem9.Caption = "downArrow";
+            galleryItem9.Image = global::MyPaint.Properties.Resources.down_icon;
+            galleryItem10.Caption = "upArrow";
+            galleryItem10.Image = global::MyPaint.Properties.Resources.upArrowIcon;
+            galleryItem11.Caption = "rightArrow";
+            galleryItem11.Image = global::MyPaint.Properties.Resources.rightArrowIcon;
+            galleryItem12.Caption = "leftArrow";
+            galleryItem12.Image = global::MyPaint.Properties.Resources.leftArrow;
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1,
             galleryItem2,
@@ -231,7 +243,11 @@
             galleryItem5,
             galleryItem6,
             galleryItem7,
-            galleryItem8});
+            galleryItem8,
+            galleryItem9,
+            galleryItem10,
+            galleryItem11,
+            galleryItem12});
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
             galleryItemGroup1});
             this.ribbonGalleryBarItem1.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
@@ -295,6 +311,31 @@
             this.btnNew.Name = "btnNew";
             this.btnNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNew_ItemClick);
             // 
+            // selectColor
+            // 
+            this.selectColor.Caption = "Color: ";
+            this.selectColor.Edit = this.repositoryItemColorPickEdit2;
+            this.selectColor.Glyph = ((System.Drawing.Image)(resources.GetObject("selectColor.Glyph")));
+            this.selectColor.Id = 29;
+            this.selectColor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("selectColor.LargeGlyph")));
+            this.selectColor.Name = "selectColor";
+            this.selectColor.EditValueChanged += new System.EventHandler(this.selectColor_EditValueChanged);
+            // 
+            // repositoryItemColorPickEdit2
+            // 
+            this.repositoryItemColorPickEdit2.AutoHeight = false;
+            this.repositoryItemColorPickEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemColorPickEdit2.Name = "repositoryItemColorPickEdit2";
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Caption = "Select";
+            this.btnSelect.Id = 32;
+            this.btnSelect.LargeGlyph = global::MyPaint.Properties.Resources.selectIcon;
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSelect_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -315,6 +356,7 @@
             // groupShape
             // 
             this.groupShape.ItemLinks.Add(this.btnUndo);
+            this.groupShape.ItemLinks.Add(this.btnSelect);
             this.groupShape.ItemLinks.Add(this.btnEraser);
             this.groupShape.ItemLinks.Add(this.ribbonGalleryBarItem1);
             this.groupShape.Name = "groupShape";
@@ -322,7 +364,7 @@
             // 
             // settingGroup
             // 
-            this.settingGroup.ItemLinks.Add(this.btnPenColor);
+            this.settingGroup.ItemLinks.Add(this.selectColor);
             this.settingGroup.ItemLinks.Add(this.barSubItem1);
             this.settingGroup.Name = "settingGroup";
             this.settingGroup.Text = "Setting";
@@ -341,6 +383,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorPickEdit1.Name = "repositoryItemColorPickEdit1";
             // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -348,7 +397,9 @@
             this.toolStripStatusLabel1,
             this.colorStatus,
             this.toolStripStatusLabel2,
-            this.penWitdhStatus});
+            this.penWitdhStatus,
+            this.toolStripStatusLabel3,
+            this.currentShape});
             this.statusStrip1.Location = new System.Drawing.Point(0, 647);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1388, 25);
@@ -381,6 +432,20 @@
             this.penWitdhStatus.Name = "penWitdhStatus";
             this.penWitdhStatus.Size = new System.Drawing.Size(37, 20);
             this.penWitdhStatus.Text = "1 px";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(20, 3, 0, 2);
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(105, 20);
+            this.toolStripStatusLabel3.Text = "Current Shape:";
+            // 
+            // currentShape
+            // 
+            this.currentShape.Image = global::MyPaint.Properties.Resources.pencil_icon;
+            this.currentShape.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.currentShape.Name = "currentShape";
+            this.currentShape.Size = new System.Drawing.Size(20, 20);
             // 
             // contextMenu
             // 
@@ -495,8 +560,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.contextMenu.ResumeLayout(false);
@@ -516,7 +583,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupShape;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup settingGroup;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
-        private DevExpress.XtraBars.BarButtonItem btnPenColor;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel colorStatus;
@@ -546,5 +612,11 @@
         private DevExpress.XtraBars.BarCheckItem btnEraser10px;
         private DevExpress.XtraBars.BarCheckItem btnEraser20px;
         private DevExpress.XtraBars.BarButtonItem btnNew;
+        private DevExpress.XtraBars.BarEditItem selectColor;
+        private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel currentShape;
+        private DevExpress.XtraBars.BarCheckItem btnSelect;
     }
 }

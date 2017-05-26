@@ -33,9 +33,9 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cbBackColor = new DevExpress.XtraEditors.ColorPickEdit();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cbStyle = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.cbForeColor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBackColor.Properties)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,26 +94,8 @@
             this.panel1.Controls.Add(this.labelControl1);
             this.panel1.Location = new System.Drawing.Point(13, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(340, 173);
+            this.panel1.Size = new System.Drawing.Size(340, 143);
             this.panel1.TabIndex = 2;
-            // 
-            // btnOk
-            // 
-            this.btnOk.Location = new System.Drawing.Point(279, 191);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 33);
-            this.btnOk.TabIndex = 3;
-            this.btnOk.Text = "OK";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.labelControl3.Location = new System.Drawing.Point(36, 93);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(36, 18);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "Style:";
             // 
             // cbStyle
             // 
@@ -127,17 +109,36 @@
             this.cbStyle.Size = new System.Drawing.Size(186, 24);
             this.cbStyle.TabIndex = 2;
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl3.Location = new System.Drawing.Point(36, 93);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(36, 18);
+            this.labelControl3.TabIndex = 0;
+            this.labelControl3.Text = "Style:";
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(279, 166);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 33);
+            this.btnOk.TabIndex = 3;
+            this.btnOk.Text = "OK";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
             // HatchBrush
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 236);
+            this.ClientSize = new System.Drawing.Size(366, 211);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "HatchBrush";
             this.Text = "HatchBrush";
-            this.Load += new System.EventHandler(this.HatchBrush_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbForeColor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBackColor.Properties)).EndInit();
             this.panel1.ResumeLayout(false);

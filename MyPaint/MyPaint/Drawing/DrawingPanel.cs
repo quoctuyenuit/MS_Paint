@@ -114,6 +114,11 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.TriangleShape(this.paneSize, e.Location);
                             break;
                         }
+                    case Tools.PaintTools.EnumDrawingTool.SquareTriangle:
+                        {
+                            activeShape = new Shape.SquareTriangleShape(this.paneSize, e.Location);
+                            break;
+                        }
                     case Tools.PaintTools.EnumDrawingTool.Diamond:
                         {
                             activeShape = new Shape.DiamondShape(this.paneSize, e.Location);
@@ -129,9 +134,29 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.DownArowShape(this.paneSize, e.Location);
                             break;
                         }
+                    case Tools.PaintTools.EnumDrawingTool.UpArrow:
+                        {
+                            activeShape = new Shape.UpArrowShape(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.RightArrow:
+                        {
+                            activeShape = new Shape.RightArrowShape(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.LeftArrow:
+                        {
+                            activeShape = new Shape.LeftArrowShape(this.paneSize, e.Location);
+                            break;
+                        }
                     case Tools.PaintTools.EnumDrawingTool.Eraser:
                         {
                             activeShape = new Shape.Eraser(this.paneSize, e.Location);
+                            break;
+                        }
+                    case Tools.PaintTools.EnumDrawingTool.Select:
+                        {
+                            activeShape = new Shape.SelectShape(this.paneSize, e.Location, this.mainPanel);
                             break;
                         }
                 }

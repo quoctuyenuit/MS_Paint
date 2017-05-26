@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyPaint.Shape
 {
-    class PentagonShape:RectangleShape
+    class PentagonShape:DrawingFrame
     {
         public PentagonShape(Size surfaceSize, Point p)
             : base(surfaceSize, p)
@@ -19,113 +19,43 @@ namespace MyPaint.Shape
             get { return this.generateImage(); }
         }
 
-        private Bitmap generateImage()
+        protected override Bitmap generateImage()
         {
             Bitmap bmp = new Bitmap(surfaceSize.Width, surfaceSize.Height);
 
             if (leftBound == rightBound && upperBound == lowerBound)
                 return bmp;
 
-            switch (drawingStatus)
-            {
-                case DrawingSetting.DrawingStatus.PreDraw:
-                    {
-                        break;
-                    }
-                case DrawingSetting.DrawingStatus.Draw:
-                    {
-                        using (Graphics gr = Graphics.FromImage(bmp))
-                        {
-                            gr.SmoothingMode = SmoothingMode.AntiAlias;
-
-                            Pen pen = genratePen(this.drawingProperties);
-                            pen.StartCap = LineCap.Round;
-                            pen.EndCap = LineCap.Round;
-
-                            Point p1 = new Point((rightBound - leftBound) / 2 + leftBound, upperBound);
-                            Point p2 = new Point(rightBound, (int)((lowerBound - upperBound) * (0.39) + upperBound));
-                            Point p3 = new Point((int)(rightBound - (rightBound - leftBound) * (0.19)), lowerBound);
-                            Point p4 = new Point((int)(leftBound + (rightBound - leftBound) * (0.19)), lowerBound);
-                            Point p5 = new Point(leftBound, (int)((lowerBound - upperBound) * (0.39) + upperBound));
-
-                            GraphicsPath path = new GraphicsPath();
-                            path.AddLine(p1, p2);
-                            path.AddLine(p2, p3);
-                            path.AddLine(p3, p4);
-                            path.AddLine(p4, p5);
-                            path.AddLine(p1, p5);
-
-                            gr.DrawPath(pen, path);
-                            if (Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
-                            {
-                                gr.FillPath(drawingProperties.ActiveBrush, path);
-                            }
-                        }
-                        break;
-                    }
-                case DrawingSetting.DrawingStatus.Free:
-                case DrawingSetting.DrawingStatus.Adjust:
-                    {
-                        using (Graphics gr = Graphics.FromImage(bmp))
-                        {
-                            gr.SmoothingMode = SmoothingMode.AntiAlias;
-
-                            Pen pen = genratePen(this.drawingProperties);
-                            pen.StartCap = LineCap.Round;
-                            pen.EndCap = LineCap.Round;
-
-                            Point p1 = new Point((rightBound - leftBound) / 2 + leftBound, upperBound);
-                            Point p2 = new Point(rightBound, (int)((lowerBound - upperBound) * (0.39) + upperBound));
-                            Point p3 = new Point((int)(rightBound - (rightBound - leftBound) * (0.19)), lowerBound);
-                            Point p4 = new Point((int)(leftBound + (rightBound - leftBound) * (0.19)), lowerBound);
-                            Point p5 = new Point(leftBound, (int)((lowerBound - upperBound) * (0.39) + upperBound));
-
-                            GraphicsPath path = new GraphicsPath();
-                            path.AddLine(p1, p2);
-                            path.AddLine(p2, p3);
-                            path.AddLine(p3, p4);
-                            path.AddLine(p4, p5);
-                            path.AddLine(p1, p5);
-
-                            gr.DrawPath(pen, path);
-                            if (Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
-                            {
-                                gr.FillPath(drawingProperties.ActiveBrush, path);
-                            }
-                        }
-                        break;
-                    }
-            }
-
-            if (!doneStatus)
+            if (drawingStatus == DrawingSetting.DrawingStatus.PreDraw)
+                return bmp;
+            else
             {
                 using (Graphics gr = Graphics.FromImage(bmp))
                 {
-                    Pen pen = new Pen(Color.Gray);
-                    pen.Width = 0.1f;
-                    pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-                    gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound + 1, lowerBound - upperBound + 1));
+                    gr.SmoothingMode = SmoothingMode.AntiAlias;
 
-                    int[] xArr = new int[3];
-                    int[] yArr = new int[3];
+                    Pen pen = genratePen(this.drawingProperties);
+                    pen.StartCap = LineCap.Round;
+                    pen.EndCap = LineCap.Round;
 
-                    xArr[0] = leftBound;
-                    xArr[1] = (leftBound + rightBound) / 2;
-                    xArr[2] = rightBound;
+                    Point p1 = new Point((rightBound - leftBound) / 2 + leftBound, upperBound);
+                    Point p2 = new Point(rightBound, (int)((lowerBound - upperBound) * (0.39) + upperBound));
+                    Point p3 = new Point((int)(rightBound - (rightBound - leftBound) * (0.19)), lowerBound);
+                    Point p4 = new Point((int)(leftBound + (rightBound - leftBound) * (0.19)), lowerBound);
+                    Point p5 = new Point(leftBound, (int)((lowerBound - upperBound) * (0.39) + upperBound));
 
-                    yArr[0] = upperBound;
-                    yArr[1] = (upperBound + lowerBound) / 2;
-                    yArr[2] = lowerBound;
+                    Point[] pArray = { p1, p2, p3, p4, p5 };
+                    gr.DrawPolygon(pen, pArray);
 
-                    for (int i = 0; i < xArr.Length; i++)
-                        for (int j = 0; j < yArr.Length; j++)
-                        {
-                            if (i == 1 && j == 1)
-                                continue;
-                            drawEditPoint(xArr[i], yArr[j], gr);
-                        }
+                    if (Tools.PaintTools.BrushStatus == Tools.PaintTools.EnumBrushStatus.Fill)
+                    {
+                        gr.FillPolygon(drawingProperties.ActiveBrush, pArray);
+                    }
                 }
             }
+
+            drawFrame(bmp);
+
             return bmp;
         }
     }

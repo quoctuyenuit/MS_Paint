@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace MyPaint.Shape
 {
-    class TriangleShape : DrawingFrame
+    class SquareTriangleShape:DrawingFrame
     {
-        public TriangleShape(Size surfaceSize, Point p):base(surfaceSize, p)
+        public SquareTriangleShape(Size surfaceSize, Point p)
+            : base(surfaceSize, p)
         { }
 
         public override Bitmap CurrentShape
@@ -37,10 +38,12 @@ namespace MyPaint.Shape
                     pen.StartCap = LineCap.Round;
                     pen.EndCap = LineCap.Round;
 
-                    Point p1 = new Point(leftBound, lowerBound);
-                    Point p2 = new Point((rightBound - leftBound) / 2 + leftBound, upperBound);
-                    Point p3 = new Point(rightBound, lowerBound);
 
+
+                    Point p1 = new Point(leftBound, upperBound);
+                    Point p2 = new Point(leftBound, lowerBound);
+                    Point p3 = new Point(rightBound, lowerBound);
+                   
                     Point[] pArray = { p1, p2, p3 };
                     gr.DrawPolygon(pen, pArray);
 
@@ -48,8 +51,11 @@ namespace MyPaint.Shape
                     {
                         gr.FillPolygon(drawingProperties.ActiveBrush, pArray);
                     }
+
+
                 }
             }
+
             drawFrame(bmp);
 
             return bmp;
