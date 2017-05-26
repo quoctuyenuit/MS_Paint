@@ -224,6 +224,21 @@
   <ItemGroup>
     <None Include="Resources\squareTriangleIcon.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cut_32x321.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

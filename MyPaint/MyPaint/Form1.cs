@@ -16,6 +16,14 @@ namespace MyPaint
     {
         Drawing.MainPanel DrawingSpace;
 
+        private Bitmap copyBitmap;
+
+        public Bitmap CopyBitmap
+        {
+            get { return copyBitmap; }
+            set { copyBitmap = value; }
+        }
+
         void init()
         {
             this.DrawingSpace = new Drawing.MainPanel(this.Size);
@@ -164,14 +172,23 @@ namespace MyPaint
 
         private void contextMenu_Opening(object sender, CancelEventArgs e)
         {
-            foreach (ToolStripMenuItem item in contextMenu.Items)
+            foreach (ToolStripItem item in contextMenu.Items)
                 item.Enabled = true;
 
             if (this.DrawingSpace.Cursor != Cursors.SizeAll)
             {
-                foreach (ToolStripMenuItem item in contextMenu.Items)
+                foreach (ToolStripItem item in contextMenu.Items)
                     item.Enabled = (item.Name != menuItemSaveFile.Name && item.Name != menuItemOpenFile.Name) ? false : true;
+
+                if (!btnSelect.Checked)
+                    menuItemCopy.Enabled = false;
             }
+           
+
+            if (copyBitmap != null)
+                menuItemPaste.Enabled = true;
+            else
+                menuItemPaste.Enabled = false;
         }
 
         private void menuItemOpenFile_Click(object sender, EventArgs e)
@@ -252,6 +269,47 @@ namespace MyPaint
             Tools.PaintTools.BrushStatus = Tools.PaintTools.EnumBrushStatus.Fill;
         }
 
+        private void menuItemCopy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap bmp = this.DrawingSpace.DrawingPanel.ActiveShape.CurrentImage;
+                if (bmp != null)
+                {
+                    this.copyBitmap = bmp.Clone(new Rectangle(0, 0, bmp.Size.Width, bmp.Size.Height), bmp.PixelFormat);
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        private void menuItemCut_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap bmp = this.DrawingSpace.DrawingPanel.ActiveShape.CurrentImage;
+                if (bmp != null)
+                {
+                    this.copyBitmap = bmp.Clone(new Rectangle(0, 0, bmp.Size.Width, bmp.Size.Height), bmp.PixelFormat);
+                }
+                btnUndo_ItemClick(null, null);
+            }
+            catch (Exception ex) { }
+        }
+
+        private void menuItemPaste_Click(object sender, EventArgs e)
+        {
+            this.DrawingSpace.embed();
+            if (this.copyBitmap != null)
+            {
+                this.DrawingSpace.DrawingPanel.ActiveShape = new Shape.ImageShape(this.DrawingSpace.Size, new Point(0, 0), this.copyBitmap);
+
+                this.DrawingSpace.DrawingPanel.updateContent();
+
+                this.DrawingSpace.Refresh();
+            }
+
+        }
+
         private void menuItemDelete_Click(object sender, EventArgs e)
         {
             btnUndo_ItemClick(null, null);
@@ -259,6 +317,7 @@ namespace MyPaint
 
         #endregion
 
+        #region Button and Item click
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.DrawingSpace.embed();
@@ -281,12 +340,18 @@ namespace MyPaint
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == (Keys.Control|Keys.Z))
+            if (e.KeyData == (Keys.Control | Keys.Z))
                 btnUndo_ItemClick(null, null);
-            else if(e.KeyData == (Keys.Control|Keys.O))
+            else if (e.KeyData == (Keys.Control | Keys.O))
                 btnOpen_ItemClick(null, null);
-            else if(e.KeyData ==(Keys.Control|Keys.S))
+            else if (e.KeyData == (Keys.Control | Keys.S))
                 btnSave_ItemClick(null, null);
+            else if (e.KeyData == (Keys.Control | Keys.C))
+                menuItemCopy_Click(null, null);
+            else if(e.KeyData == (Keys.Control|Keys.X))
+                menuItemCut_Click(null, null);
+            else if(e.KeyData == (Keys.Control|Keys.V))
+                menuItemPaste_Click(null, null);
         }
 
         private void ribbonGalleryBarItem1_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
@@ -463,6 +528,21 @@ namespace MyPaint
             this.colorStatus.BackColor = Tools.PaintTools.DrawingColor;
         }
 
-        
+        private void btnCopy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            menuItemCopy_Click(null, null);
+        }
+
+        private void btnCut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            menuItemCut_Click(null, null);
+        }
+
+        private void btnPaste_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            menuItemPaste_Click(null, null);
+        }
+
+        #endregion
     }
 }

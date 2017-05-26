@@ -15,6 +15,13 @@ namespace MyPaint.Shape
         protected DrawingSetting.DrawingMode drawingMode;
         protected DrawingSetting.DrawingStatus drawingStatus;
         protected Tools.DrawingProperties drawingProperties;
+
+        public Bitmap CurrentImage//Bitmap chứa nội dung hình ảnh đang vẽ, áp dụng cho copy hình ở chế độ select
+        {
+            get;
+            set;
+        }
+
         public Shape(Size surfaceSize)
         {
             this.surfaceSize = surfaceSize;
@@ -27,7 +34,8 @@ namespace MyPaint.Shape
             Pen customPen = new Pen(properties.ActiveColor, properties.PenWidth);
             return customPen;
         }
-        public abstract Bitmap CurrentShape
+
+        public abstract Bitmap CurrentShape//Bitmap chứa cả khung hình hiện tại đang vẽ
         {
             get;
         }

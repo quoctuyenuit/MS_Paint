@@ -36,8 +36,6 @@ namespace MyPaint.Drawing
         {
             this.Size = _size;
 
-            
-
             this.MouseClick += MainPanel_MouseClick;
             this.MouseDown += MainPanel_MouseDown;
             this.MouseUp += MainPanel_MouseUp;
@@ -50,6 +48,7 @@ namespace MyPaint.Drawing
             this.DoubleBuffered = true;
             this.Cursor = Cursors.Cross;
         }
+
 
         void MainPanel_Resize(object sender, EventArgs e)
         {

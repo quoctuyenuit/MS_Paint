@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem1 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem2 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem3 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem4 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem5 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem6 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem7 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem8 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem9 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem10 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem11 = new DevExpress.XtraBars.Ribbon.GalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem12 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup6 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem61 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem62 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem63 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem64 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem65 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem66 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem67 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem68 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem69 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem70 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem71 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem72 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnOpen = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
@@ -61,8 +62,12 @@
             this.selectColor = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemColorPickEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.btnSelect = new DevExpress.XtraBars.BarCheckItem();
+            this.btnPaste = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCopy = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCut = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.Clipboard = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupShape = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.settingGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -75,9 +80,14 @@
             this.penWitdhStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentShape = new System.Windows.Forms.ToolStripStatusLabel();
-            this.contextMenu = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemOpenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCut = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemFill = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSubItemUnFill = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSubItemSolidBrush = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +107,7 @@
             // 
             // ribbonControl1
             // 
+            this.ribbonControl1.AllowMinimizeRibbon = false;
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
@@ -116,9 +127,12 @@
             this.btnEraser20px,
             this.btnNew,
             this.selectColor,
-            this.btnSelect});
+            this.btnSelect,
+            this.btnPaste,
+            this.btnCopy,
+            this.btnCut});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 33;
+            this.ribbonControl1.MaxItemId = 37;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -136,6 +150,7 @@
             // btnOpen
             // 
             this.btnOpen.Caption = "Open";
+            this.btnOpen.Glyph = global::MyPaint.Properties.Resources.open2_32x32;
             this.btnOpen.Id = 1;
             this.btnOpen.LargeGlyph = global::MyPaint.Properties.Resources.open2_32x32;
             this.btnOpen.Name = "btnOpen";
@@ -209,47 +224,47 @@
             // 
             // 
             // 
-            galleryItemGroup1.Caption = "groupShape";
-            galleryItem1.Caption = "pencil";
-            galleryItem1.Checked = true;
-            galleryItem1.Image = global::MyPaint.Properties.Resources.pencil_icon;
-            galleryItem2.Caption = "line";
-            galleryItem2.Image = global::MyPaint.Properties.Resources.Line_icon;
-            galleryItem3.Caption = "rectangle";
-            galleryItem3.Image = global::MyPaint.Properties.Resources.rectangle_icon;
-            galleryItem4.Caption = "ellipse";
-            galleryItem4.Image = global::MyPaint.Properties.Resources.ellipse_icon;
-            galleryItem5.Caption = "triangle";
-            galleryItem5.Image = global::MyPaint.Properties.Resources.Triangle_icon;
-            galleryItem6.Caption = "diamond";
-            galleryItem6.Image = global::MyPaint.Properties.Resources.diamondIcon;
-            galleryItem7.Caption = "pentagon";
-            galleryItem7.Image = global::MyPaint.Properties.Resources.pentagon_icon;
-            galleryItem8.Caption = "squareTriangle";
-            galleryItem8.Image = global::MyPaint.Properties.Resources.squareTriangleIcon;
-            galleryItem9.Caption = "downArrow";
-            galleryItem9.Image = global::MyPaint.Properties.Resources.down_icon;
-            galleryItem10.Caption = "upArrow";
-            galleryItem10.Image = global::MyPaint.Properties.Resources.upArrowIcon;
-            galleryItem11.Caption = "rightArrow";
-            galleryItem11.Image = global::MyPaint.Properties.Resources.rightArrowIcon;
-            galleryItem12.Caption = "leftArrow";
-            galleryItem12.Image = global::MyPaint.Properties.Resources.leftArrow;
-            galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            galleryItem1,
-            galleryItem2,
-            galleryItem3,
-            galleryItem4,
-            galleryItem5,
-            galleryItem6,
-            galleryItem7,
-            galleryItem8,
-            galleryItem9,
-            galleryItem10,
-            galleryItem11,
-            galleryItem12});
+            galleryItemGroup6.Caption = "groupShape";
+            galleryItem61.Caption = "pencil";
+            galleryItem61.Checked = true;
+            galleryItem61.Image = global::MyPaint.Properties.Resources.pencil_icon;
+            galleryItem62.Caption = "line";
+            galleryItem62.Image = global::MyPaint.Properties.Resources.Line_icon;
+            galleryItem63.Caption = "rectangle";
+            galleryItem63.Image = global::MyPaint.Properties.Resources.rectangle_icon;
+            galleryItem64.Caption = "ellipse";
+            galleryItem64.Image = global::MyPaint.Properties.Resources.ellipse_icon;
+            galleryItem65.Caption = "triangle";
+            galleryItem65.Image = global::MyPaint.Properties.Resources.Triangle_icon;
+            galleryItem66.Caption = "diamond";
+            galleryItem66.Image = global::MyPaint.Properties.Resources.diamondIcon;
+            galleryItem67.Caption = "pentagon";
+            galleryItem67.Image = global::MyPaint.Properties.Resources.pentagon_icon;
+            galleryItem68.Caption = "squareTriangle";
+            galleryItem68.Image = global::MyPaint.Properties.Resources.squareTriangleIcon;
+            galleryItem69.Caption = "downArrow";
+            galleryItem69.Image = global::MyPaint.Properties.Resources.down_icon;
+            galleryItem70.Caption = "upArrow";
+            galleryItem70.Image = global::MyPaint.Properties.Resources.upArrowIcon;
+            galleryItem71.Caption = "rightArrow";
+            galleryItem71.Image = global::MyPaint.Properties.Resources.rightArrowIcon;
+            galleryItem72.Caption = "leftArrow";
+            galleryItem72.Image = global::MyPaint.Properties.Resources.leftArrow;
+            galleryItemGroup6.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem61,
+            galleryItem62,
+            galleryItem63,
+            galleryItem64,
+            galleryItem65,
+            galleryItem66,
+            galleryItem67,
+            galleryItem68,
+            galleryItem69,
+            galleryItem70,
+            galleryItem71,
+            galleryItem72});
             this.ribbonGalleryBarItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup1});
+            galleryItemGroup6});
             this.ribbonGalleryBarItem1.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
             this.ribbonGalleryBarItem1.Id = 22;
             this.ribbonGalleryBarItem1.Name = "ribbonGalleryBarItem1";
@@ -336,10 +351,35 @@
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSelect_ItemClick);
             // 
+            // btnPaste
+            // 
+            this.btnPaste.Caption = "Paste";
+            this.btnPaste.Id = 33;
+            this.btnPaste.LargeGlyph = global::MyPaint.Properties.Resources.paste_32x32;
+            this.btnPaste.Name = "btnPaste";
+            this.btnPaste.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPaste_ItemClick);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Caption = "Copy";
+            this.btnCopy.Glyph = global::MyPaint.Properties.Resources.copy_16x16;
+            this.btnCopy.Id = 34;
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCopy_ItemClick);
+            // 
+            // btnCut
+            // 
+            this.btnCut.Caption = "Cut";
+            this.btnCut.Glyph = global::MyPaint.Properties.Resources.cut_16x16;
+            this.btnCut.Id = 35;
+            this.btnCut.Name = "btnCut";
+            this.btnCut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCut_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
+            this.Clipboard,
             this.groupShape,
             this.settingGroup});
             this.ribbonPage1.Name = "ribbonPage1";
@@ -351,7 +391,17 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnOpen);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSave);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "File";
+            // 
+            // Clipboard
+            // 
+            this.Clipboard.ItemLinks.Add(this.btnPaste);
+            this.Clipboard.ItemLinks.Add(this.btnCopy);
+            this.Clipboard.ItemLinks.Add(this.btnCut);
+            this.Clipboard.Name = "Clipboard";
+            this.Clipboard.ShowCaptionButton = false;
+            this.Clipboard.Text = "Clipboard";
             // 
             // groupShape
             // 
@@ -360,6 +410,7 @@
             this.groupShape.ItemLinks.Add(this.btnEraser);
             this.groupShape.ItemLinks.Add(this.ribbonGalleryBarItem1);
             this.groupShape.Name = "groupShape";
+            this.groupShape.ShowCaptionButton = false;
             this.groupShape.Text = "Shape";
             // 
             // settingGroup
@@ -367,6 +418,7 @@
             this.settingGroup.ItemLinks.Add(this.selectColor);
             this.settingGroup.ItemLinks.Add(this.barSubItem1);
             this.settingGroup.Name = "settingGroup";
+            this.settingGroup.ShowCaptionButton = false;
             this.settingGroup.Text = "Setting";
             // 
             // repositoryItemComboBox1
@@ -453,10 +505,15 @@
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemOpenFile,
             this.menuItemSaveFile,
+            this.toolStripSeparator1,
+            this.menuItemCopy,
+            this.menuItemCut,
+            this.menuItemPaste,
+            this.toolStripSeparator2,
             this.menuItemFill,
             this.menuItemDelete});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(201, 108);
+            this.contextMenu.Size = new System.Drawing.Size(201, 198);
             this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
             // 
             // menuItemOpenFile
@@ -476,6 +533,43 @@
             this.menuItemSaveFile.Size = new System.Drawing.Size(200, 26);
             this.menuItemSaveFile.Text = "Save File";
             this.menuItemSaveFile.Click += new System.EventHandler(this.menuItemSaveFile_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(197, 6);
+            // 
+            // menuItemCopy
+            // 
+            this.menuItemCopy.Image = global::MyPaint.Properties.Resources.copy_32x32;
+            this.menuItemCopy.Name = "menuItemCopy";
+            this.menuItemCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.menuItemCopy.Size = new System.Drawing.Size(200, 26);
+            this.menuItemCopy.Text = "Copy";
+            this.menuItemCopy.Click += new System.EventHandler(this.menuItemCopy_Click);
+            // 
+            // menuItemCut
+            // 
+            this.menuItemCut.Image = global::MyPaint.Properties.Resources.cut_16x16;
+            this.menuItemCut.Name = "menuItemCut";
+            this.menuItemCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.menuItemCut.Size = new System.Drawing.Size(200, 26);
+            this.menuItemCut.Text = "Cut";
+            this.menuItemCut.Click += new System.EventHandler(this.menuItemCut_Click);
+            // 
+            // menuItemPaste
+            // 
+            this.menuItemPaste.Image = global::MyPaint.Properties.Resources.paste_32x32;
+            this.menuItemPaste.Name = "menuItemPaste";
+            this.menuItemPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.menuItemPaste.Size = new System.Drawing.Size(200, 26);
+            this.menuItemPaste.Text = "Paste";
+            this.menuItemPaste.Click += new System.EventHandler(this.menuItemPaste_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
             // 
             // menuItemFill
             // 
@@ -576,7 +670,6 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem btnOpen;
         private DevExpress.XtraBars.BarButtonItem btnSave;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEdit1;
@@ -618,5 +711,15 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel currentShape;
         private DevExpress.XtraBars.BarCheckItem btnSelect;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCopy;
+        private System.Windows.Forms.ToolStripMenuItem menuItemPaste;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private DevExpress.XtraBars.BarButtonItem btnPaste;
+        private DevExpress.XtraBars.BarButtonItem btnCopy;
+        private DevExpress.XtraBars.BarButtonItem btnCut;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup Clipboard;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCut;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
