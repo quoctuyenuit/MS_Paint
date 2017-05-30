@@ -81,6 +81,7 @@
     <Compile Include="Shape\DiamondShape.cs" />
     <Compile Include="Shape\DownArowShape.cs" />
     <Compile Include="Shape\Frame\FrameSpace.cs" />
+    <Compile Include="Shape\PolygonShape.cs" />
     <Compile Include="Tools\DrawingSetting.cs" />
     <Compile Include="Shape\Ellipse.cs" />
     <Compile Include="Shape\Eraser.cs" />
@@ -248,6 +249,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\paintIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bezierShapeIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\polygonShapeIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

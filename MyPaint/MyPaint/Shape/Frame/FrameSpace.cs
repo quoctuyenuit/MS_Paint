@@ -17,14 +17,7 @@ namespace MyPaint.Shape.Frame
         protected int upperBound;
         protected int lowerBound;
         protected bool doneStatus;
-        //Mốc bên trái cùng khi chỉnh sửa
-        protected int pivotLeftBound;
-        //Mốc bên phải cùng khi chỉnh sửa
-        protected int pivotRightBound;
-        //Mốc bên trên cùng khi chỉnh sửa
-        protected int pivotUpperBound;
-        //Mốc bên dưới cùng khi chỉnh sửa
-        protected int pivotLowerBound;
+       
         //Điểm mốc vị trí chuột khi chỉnh sửa hình
         protected Point pivotMove;
 
@@ -52,20 +45,12 @@ namespace MyPaint.Shape.Frame
                         {
                             this.drawingStatus = DrawingSetting.DrawingStatus.Draw;
                             this.drawingMode = DrawingSetting.DrawingMode.DownRight;
-                            this.pivotLeftBound = leftBound;
-                            this.pivotRightBound = rightBound;
-                            this.pivotUpperBound = upperBound;
-                            this.pivotLowerBound = lowerBound;
                             break;
                         }
                     case DrawingSetting.DrawingStatus.Free:
                         {
                             this.drawingStatus = DrawingSetting.DrawingStatus.Adjust;
                             this.drawingMode = checkDrawingMode(_curPoint);
-                            this.pivotLeftBound = leftBound;
-                            this.pivotRightBound = rightBound;
-                            this.pivotUpperBound = upperBound;
-                            this.pivotLowerBound = lowerBound;
                             this.pivotMove = _curPoint;
                             switch (drawingMode)
                             {
@@ -103,55 +88,47 @@ namespace MyPaint.Shape.Frame
                         case DrawingSetting.DrawingMode.HonLeft:
                             {
 
-                                leftBound = Math.Min(_curPoint.X, pivotRightBound);
+                                leftBound = Math.Min(_curPoint.X, rightBound - pointRadius);
 
                                 break;
                             }
                         case DrawingSetting.DrawingMode.HonRight:
                             {
-                                rightBound = Math.Max(_curPoint.X, pivotLeftBound);
+                                rightBound = Math.Max(_curPoint.X, leftBound + pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.VerUp:
                             {
-                                upperBound = Math.Min(_curPoint.Y, pivotLowerBound);
+                                upperBound = Math.Min(_curPoint.Y, lowerBound - pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.VerDown:
                             {
-                                lowerBound = Math.Max(_curPoint.Y, pivotUpperBound);
+                                lowerBound = Math.Max(_curPoint.Y, upperBound + pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.UpLeft:
                             {
-                                upperBound = Math.Min(_curPoint.Y, pivotLowerBound);
-                                lowerBound = Math.Max(_curPoint.Y, pivotLowerBound);
-                                leftBound = Math.Min(_curPoint.X, pivotRightBound);
-                                rightBound = Math.Max(_curPoint.X, pivotRightBound);
+                                upperBound = Math.Min(_curPoint.Y, lowerBound - pointRadius);
+                                leftBound = Math.Min(_curPoint.X, rightBound - pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.DownRight:
                             {
-                                upperBound = Math.Min(_curPoint.Y, pivotUpperBound);
-                                lowerBound = Math.Max(_curPoint.Y, pivotUpperBound);
-                                leftBound = Math.Min(_curPoint.X, pivotLeftBound);
-                                rightBound = Math.Max(_curPoint.X, pivotLeftBound);
+                                lowerBound = Math.Max(_curPoint.Y, upperBound + pointRadius);
+                                rightBound = Math.Max(_curPoint.X, leftBound + pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.UpRight:
                             {
-                                upperBound = Math.Min(_curPoint.Y, pivotLowerBound);
-                                lowerBound = Math.Max(_curPoint.Y, pivotLowerBound);
-                                leftBound = Math.Min(_curPoint.X, pivotLeftBound);
-                                rightBound = Math.Max(_curPoint.X, pivotLeftBound);
+                                upperBound = Math.Min(_curPoint.Y, lowerBound - pointRadius);
+                                rightBound = Math.Max(_curPoint.X, leftBound + pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.DownLeft:
                             {
-                                upperBound = Math.Min(_curPoint.Y, pivotUpperBound);
-                                lowerBound = Math.Max(_curPoint.Y, pivotUpperBound);
-                                leftBound = Math.Min(_curPoint.X, pivotRightBound);
-                                rightBound = Math.Max(_curPoint.X, pivotRightBound);
+                                lowerBound = Math.Max(_curPoint.Y, upperBound + pointRadius);
+                                leftBound = Math.Min(_curPoint.X, rightBound - pointRadius);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.Move:

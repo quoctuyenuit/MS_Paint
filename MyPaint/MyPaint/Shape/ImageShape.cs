@@ -25,11 +25,6 @@ namespace MyPaint.Shape
             this.rightBound = _image.Size.Width + p.X;
             this.lowerBound = _image.Size.Height + p.Y;
 
-            this.pivotLeftBound = leftBound;
-            this.pivotRightBound = rightBound;
-            this.pivotUpperBound = upperBound;
-            this.pivotLowerBound = lowerBound;
-
             this.doneStatus = false;
             this.drawingStatus = DrawingSetting.DrawingStatus.Free;
             this.drawingMode = DrawingSetting.DrawingMode.Move;

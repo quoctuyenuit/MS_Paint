@@ -44,7 +44,7 @@ namespace MyPaint
             InitializeComponent();
 
             WindowState = FormWindowState.Maximized;
-            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Bezier;
+            Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.FreePen;
             Tools.PaintTools.DrawingColor = Color.Black;
             Tools.PaintTools.ColorBrush_1 = Color.White;
             Tools.PaintTools.ColorBrush_2 = Color.White;
@@ -97,6 +97,7 @@ namespace MyPaint
 
         private void btnOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.DrawingFrames.embed();
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Filter = "All Image Files|*.bmp;*.ico;*.gif;*.jpeg;*.jpg;" +
@@ -357,6 +358,7 @@ namespace MyPaint
 
         private void btnSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.DrawingFrames.embed();
             btnCopy.Enabled = true;
             btnCut.Enabled = true;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Select;
@@ -394,8 +396,10 @@ namespace MyPaint
 
         private void ribbonGalleryBarItem1_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
+            this.DrawingFrames.embed();
             selectStyle.Checked = false;
             eraserStyle.Checked = false;
+            this.btnCopy.Enabled = this.btnCut.Enabled = false;
             switch(e.Item.Caption)
             {
                 case "pencil":
@@ -408,6 +412,12 @@ namespace MyPaint
                     {
                         Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Line;
                         this.currentShape.Image = Resources.Line_icon;
+                        break;
+                    }
+                case "bezier":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Bezier;
+                        this.currentShape.Image = Resources.bezierShapeIcon;
                         break;
                     }
                 case "rectangle":
@@ -470,11 +480,18 @@ namespace MyPaint
                         this.currentShape.Image = Resources.down_icon;
                         break;
                     }
+                case "polygon":
+                    {
+                        Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Polygon;
+                        this.currentShape.Image = Resources.polygonShapeIcon;
+                        break;
+                    }
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.DrawingFrames.embed();
             if (this.DrawingFrames.ListBack.Count == 0)
                 return;
 

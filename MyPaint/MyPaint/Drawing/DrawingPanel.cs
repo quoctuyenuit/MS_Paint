@@ -165,6 +165,11 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.BezierShape(this.paneSize, e.Location);
                             break;
                         }
+                    case Tools.PaintTools.EnumDrawingTool.Polygon:
+                        {
+                            activeShape = new Shape.PolygonShape(this.paneSize, e.Location);
+                            break;
+                        }
                 }
             }
             Tools.DrawingProperties props = getDrawingProperties();

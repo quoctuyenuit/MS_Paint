@@ -11,7 +11,7 @@ namespace MyPaint.Shape
 {
     abstract class Shape
     {
-        public const int pointRadius = 5;
+        public const int pointRadius = 7;
         protected Size surfaceSize;
         protected DrawingSetting.DrawingMode drawingMode;
         protected DrawingSetting.DrawingStatus drawingStatus;

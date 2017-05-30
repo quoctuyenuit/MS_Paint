@@ -46,4 +46,5 @@ namespace MyPaint.Shape
             return bmp;
         }
     }
+
 }
