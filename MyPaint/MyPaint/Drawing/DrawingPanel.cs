@@ -14,7 +14,7 @@ namespace MyPaint.Drawing
         public event MainPaneMouseEventHandler MouseMove;
         public event MainPaneMouseEventHandler MouseUp;
 
-        private MainPanel mainPanel;
+        private DrawingSpace mainPanel;
 
         private Shape.Shape activeShape;
 
@@ -41,7 +41,7 @@ namespace MyPaint.Drawing
             set { paneSize = value; }
         }
 
-        public DrawingPanel(MainPanel mainPanel, Size size)
+        public DrawingPanel(DrawingSpace mainPanel, Size size)
         {
             this.mainPanel = mainPanel;
             this.paneSize = size;
@@ -85,11 +85,12 @@ namespace MyPaint.Drawing
 
         void DrawingPanel_MouseDown(object sender, Tools.MainPaneMouseEventArgs e)
         {
+            #region MouseDown
             if (activeShape == null)
             {
                 switch (Tools.PaintTools.DrawingTool)
                 {
-                    case Tools.PaintTools.EnumDrawingTool.Rectangle:
+                    case Tools.PaintTools.EnumDrawingTool.RectangleShape:
                         {
                             activeShape = new Shape.RectangleShape(this.paneSize, e.Location);
                             break;
@@ -99,7 +100,7 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.FreePen(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.Ellipse:
+                    case Tools.PaintTools.EnumDrawingTool.EllipseShape:
                         {
                             activeShape = new Shape.EllipseShape(this.paneSize, e.Location);
                             break;
@@ -109,42 +110,42 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.LineShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.Triangle:
+                    case Tools.PaintTools.EnumDrawingTool.TriangleShape:
                         {
                             activeShape = new Shape.TriangleShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.SquareTriangle:
+                    case Tools.PaintTools.EnumDrawingTool.SquareTriangleShape:
                         {
                             activeShape = new Shape.SquareTriangleShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.Diamond:
+                    case Tools.PaintTools.EnumDrawingTool.DiamondShape:
                         {
                             activeShape = new Shape.DiamondShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.Pentagon:
+                    case Tools.PaintTools.EnumDrawingTool.PentagonShape:
                         {
                             activeShape = new Shape.PentagonShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.DownArrow:
+                    case Tools.PaintTools.EnumDrawingTool.DownArrowShape:
                         {
                             activeShape = new Shape.DownArowShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.UpArrow:
+                    case Tools.PaintTools.EnumDrawingTool.UpArrowShape:
                         {
                             activeShape = new Shape.UpArrowShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.RightArrow:
+                    case Tools.PaintTools.EnumDrawingTool.RightArrowShape:
                         {
                             activeShape = new Shape.RightArrowShape(this.paneSize, e.Location);
                             break;
                         }
-                    case Tools.PaintTools.EnumDrawingTool.LeftArrow:
+                    case Tools.PaintTools.EnumDrawingTool.LeftArrowShape:
                         {
                             activeShape = new Shape.LeftArrowShape(this.paneSize, e.Location);
                             break;
@@ -159,15 +160,21 @@ namespace MyPaint.Drawing
                             activeShape = new Shape.SelectShape(this.paneSize, e.Location, this.mainPanel);
                             break;
                         }
+                    case Tools.PaintTools.EnumDrawingTool.Bezier:
+                        {
+                            activeShape = new Shape.BezierShape(this.paneSize, e.Location);
+                            break;
+                        }
                 }
             }
             Tools.DrawingProperties props = getDrawingProperties();
-            activeShape.updateShape(e.Location, props, Shape.DrawingSetting.MoseStatus.Down);
+            activeShape.updateShape(e.Location, props, Tools.DrawingSetting.MoseStatus.Down);
             this.updateContent();
             if (activeShape == null)
                 mainPanel.Cursor = System.Windows.Forms.Cursors.Cross;
             else
                 mainPanel.Cursor = activeShape.checkCursor(e.Location);
+            #endregion
         }
 
         void DrawingPanel_MouseUp(object sender, Tools.MainPaneMouseEventArgs e)
@@ -175,7 +182,7 @@ namespace MyPaint.Drawing
             if (activeShape != null)
             {
                 Tools.DrawingProperties props = getDrawingProperties();
-                activeShape.updateShape(e.Location, props, Shape.DrawingSetting.MoseStatus.Up);
+                activeShape.updateShape(e.Location, props, Tools.DrawingSetting.MoseStatus.Up);
                 updateContent();
                 if (activeShape == null)
                     mainPanel.Cursor = System.Windows.Forms.Cursors.Cross;
@@ -189,7 +196,7 @@ namespace MyPaint.Drawing
             if (activeShape != null)
             {
                 Tools.DrawingProperties props = getDrawingProperties();
-                activeShape.updateShape(e.Location, props, Shape.DrawingSetting.MoseStatus.Move);
+                activeShape.updateShape(e.Location, props, Tools.DrawingSetting.MoseStatus.Move);
                 updateContent();
                 if (activeShape == null)
                     mainPanel.Cursor = System.Windows.Forms.Cursors.Cross;

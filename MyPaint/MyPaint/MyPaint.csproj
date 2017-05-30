@@ -54,20 +54,20 @@
   <ItemGroup>
     <Compile Include="Drawing\ContentPanel.cs" />
     <Compile Include="Drawing\DrawingPanel.cs" />
-    <Compile Include="Drawing\MainPanel.cs">
+    <Compile Include="Drawing\DrawingSpace.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FillEvent\HatchBrush.cs">
+    <Compile Include="Fill\HatchBrushForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FillEvent\HatchBrush.Designer.cs">
-      <DependentUpon>HatchBrush.cs</DependentUpon>
+    <Compile Include="Fill\HatchBrushForm.Designer.cs">
+      <DependentUpon>HatchBrushForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FillEvent\LinearGradientBrush.cs">
+    <Compile Include="Fill\LinearGradientBrushForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FillEvent\LinearGradientBrush.Designer.cs">
-      <DependentUpon>LinearGradientBrush.cs</DependentUpon>
+    <Compile Include="Fill\LinearGradientBrushForm.Designer.cs">
+      <DependentUpon>LinearGradientBrushForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -77,10 +77,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shape\BezierShape.cs" />
     <Compile Include="Shape\DiamondShape.cs" />
     <Compile Include="Shape\DownArowShape.cs" />
-    <Compile Include="Shape\DrawingFrame.cs" />
-    <Compile Include="Shape\DrawingSetting.cs" />
+    <Compile Include="Shape\Frame\FrameSpace.cs" />
+    <Compile Include="Tools\DrawingSetting.cs" />
     <Compile Include="Shape\Ellipse.cs" />
     <Compile Include="Shape\Eraser.cs" />
     <Compile Include="Shape\FreePen.cs" />
@@ -98,11 +99,11 @@
     <Compile Include="Tools\DrawingProperties.cs" />
     <Compile Include="Tools\MainPaneMouseEventArgs.cs" />
     <Compile Include="Tools\PaintTools.cs" />
-    <EmbeddedResource Include="FillEvent\HatchBrush.resx">
-      <DependentUpon>HatchBrush.cs</DependentUpon>
+    <EmbeddedResource Include="Fill\HatchBrushForm.resx">
+      <DependentUpon>HatchBrushForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FillEvent\LinearGradientBrush.resx">
-      <DependentUpon>LinearGradientBrush.cs</DependentUpon>
+    <EmbeddedResource Include="Fill\LinearGradientBrushForm.resx">
+      <DependentUpon>LinearGradientBrushForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -238,6 +239,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cut_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Color-picker-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pen-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paintIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

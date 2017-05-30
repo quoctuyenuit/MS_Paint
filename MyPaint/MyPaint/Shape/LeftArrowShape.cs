@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPaint.Shape.Frame;
+using MyPaint.Tools;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,16 +10,12 @@ using System.Threading.Tasks;
 
 namespace MyPaint.Shape
 {
-    class LeftArrowShape:DrawingFrame
+    class LeftArrowShape:FrameSpace
     {
         public LeftArrowShape(Size surfaceSize, Point p)
             : base(surfaceSize, p)
         { }
 
-        public override Bitmap CurrentShape
-        {
-            get { return this.generateImage(); }
-        }
 
         protected override Bitmap generateImage()
         {

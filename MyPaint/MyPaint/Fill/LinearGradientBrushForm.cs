@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyPaint.FillEvent
+namespace MyPaint.Fill
 {
-    public partial class LinearGradientBrush : Form
+    public partial class LinearGradientBrushForm : Form
     {
         private Color _foreColor;
 
@@ -28,11 +28,11 @@ namespace MyPaint.FillEvent
             set { _backColor = value; }
         }
 
-        public LinearGradientBrush()
+        public LinearGradientBrushForm()
         {
             InitializeComponent();
-            cbBackColor.Color = Tools.PaintTools.ColorHatchBrush1;
-            cbForeColor.Color = Tools.PaintTools.ColorHatchBrush2;
+            cbBackColor.Color = Tools.PaintTools.ColorBrush_1;
+            cbForeColor.Color = Tools.PaintTools.ColorBrush_2;
         }
 
         private void btnOk_Click(object sender, EventArgs e)

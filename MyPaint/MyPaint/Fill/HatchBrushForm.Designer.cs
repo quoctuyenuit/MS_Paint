@@ -1,6 +1,6 @@
-﻿namespace MyPaint.FillEvent
+﻿namespace MyPaint.Fill
 {
-    partial class HatchBrush
+    partial class HatchBrushForm
     {
         /// <summary>
         /// Required designer variable.

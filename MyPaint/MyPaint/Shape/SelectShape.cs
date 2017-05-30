@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPaint.Shape.Frame;
+using MyPaint.Tools;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -8,20 +10,15 @@ using System.Threading.Tasks;
 
 namespace MyPaint.Shape
 {
-    class SelectShape : DrawingFrame
+    class SelectShape : FrameSpace
     {
-        public SelectShape(Size surfaceSize, Point p, Drawing.MainPanel _drawingSpace)
+        public SelectShape(Size surfaceSize, Point p, Drawing.DrawingSpace _drawingSpace)
             : base(surfaceSize, p)
         {
             this.drawingSpace = _drawingSpace;
         }
 
-        private Drawing.MainPanel drawingSpace;
-
-        public override Bitmap CurrentShape
-        {
-            get { return this.generateImage(); }
-        }
+        private Drawing.DrawingSpace drawingSpace;
 
         protected override Bitmap generateImage()
         {

@@ -9,12 +9,13 @@ namespace MyPaint.Tools
 {
     class PaintTools
     {
-        public enum EnumDrawingTool { FreePen, Rectangle, Ellipse, Line, Image, Triangle, SquareTriangle, Diamond, Pentagon, DownArrow, UpArrow, RightArrow, LeftArrow, Eraser, Select};
+        public enum EnumDrawingTool { FreePen, Line, Eraser, Select, RectangleShape, EllipseShape, ImageShape, TriangleShape, SquareTriangleShape, DiamondShape, PentagonShape, DownArrowShape, UpArrowShape, RightArrowShape, LeftArrowShape, Bezier };
         public static EnumDrawingTool DrawingTool;
         public static Color DrawingColor;
         public static Brush DrawingBrush;
-        public static Color ColorHatchBrush1;//Lưu lại màu sắc hiện tại của 2 màu khi dùng chế độ HatchBrush để đổ màu
-        public static Color ColorHatchBrush2;
+        //Save the Color Brush in HatchBruhs Style Fill
+        public static Color ColorBrush_1;
+        public static Color ColorBrush_2;
         public static System.Drawing.Drawing2D.HatchStyle HatchStyleBrush;
         public enum EnumBrushStatus { Fill, UnFill };
         public static EnumBrushStatus BrushStatus;

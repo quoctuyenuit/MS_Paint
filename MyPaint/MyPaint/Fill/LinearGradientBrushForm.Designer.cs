@@ -1,6 +1,6 @@
-﻿namespace MyPaint.FillEvent
+﻿namespace MyPaint.Fill
 {
-    partial class LinearGradientBrush
+    partial class LinearGradientBrushForm
     {
         /// <summary>
         /// Required designer variable.

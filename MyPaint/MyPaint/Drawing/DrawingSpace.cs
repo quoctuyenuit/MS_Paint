@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace MyPaint.Drawing
 {
-    class MainPanel:System.Windows.Forms.Panel
+    class DrawingSpace : System.Windows.Forms.Panel
     {
         private Stack<Bitmap> listBack;
 
@@ -32,7 +32,7 @@ namespace MyPaint.Drawing
             get { return contentPanel; }
             set { contentPanel = value; }
         }
-        public MainPanel(Size _size)
+        public DrawingSpace(Size _size)
         {
             this.Size = _size;
 

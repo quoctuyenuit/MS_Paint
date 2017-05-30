@@ -73,6 +73,16 @@ namespace MyPaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Color_picker_icon {
+            get {
+                object obj = ResourceManager.GetObject("Color-picker-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap copy_16x16 {
             get {
                 object obj = ResourceManager.GetObject("copy_16x16", resourceCulture);
@@ -241,11 +251,31 @@ namespace MyPaint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon paintIcon {
+            get {
+                object obj = ResourceManager.GetObject("paintIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap paste_32x32 {
             get {
                 object obj = ResourceManager.GetObject("paste_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pen_icon {
+            get {
+                object obj = ResourceManager.GetObject("Pen-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

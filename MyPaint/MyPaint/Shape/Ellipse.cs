@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPaint.Shape.Frame;
+using MyPaint.Tools;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,17 +10,12 @@ using System.Windows.Forms;
 
 namespace MyPaint.Shape
 {
-    class EllipseShape : DrawingFrame
+    class EllipseShape : FrameSpace
     {
 
         public EllipseShape(Size size, Point p)
             : base(size, p)
         {}
-
-        public override Bitmap CurrentShape
-        {
-            get { return generateImage(); }
-        }
 
         protected override Bitmap generateImage()
         {

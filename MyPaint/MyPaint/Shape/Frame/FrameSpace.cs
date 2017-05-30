@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPaint.Tools;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyPaint.Shape
+namespace MyPaint.Shape.Frame
 {
-    abstract class DrawingFrame:Shape
+    abstract class FrameSpace : Shape
     {
         private const int HANDLE_POINT_RADIUS = 2;
         protected int leftBound;
@@ -27,7 +28,7 @@ namespace MyPaint.Shape
         //Điểm mốc vị trí chuột khi chỉnh sửa hình
         protected Point pivotMove;
 
-        public DrawingFrame(Size size, Point p)
+        public FrameSpace(Size size, Point p)
             : base(size)
         {
             this.leftBound = this.rightBound = p.X;
@@ -37,6 +38,7 @@ namespace MyPaint.Shape
         }
 
         #region Override
+
         public override void updateShape(Point _curPoint, Tools.DrawingProperties _properties, DrawingSetting.MoseStatus _mouseStatus)
         {
             this.drawingProperties = _properties;
@@ -273,14 +275,14 @@ namespace MyPaint.Shape
         }
 
         protected abstract Bitmap generateImage();
-       
+
         protected void drawFrame(Bitmap bmp)
         {
             if (!doneStatus)
             {
                 using (Graphics gr = Graphics.FromImage(bmp))
                 {
-                    Pen pen = new Pen(Color.LightSkyBlue);
+                    Pen pen = new Pen(Color.FromArgb(0x33, 0x00, 0xCC));
                     pen.Width = 0.1f;
                     pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
                     gr.DrawRectangle(pen, new System.Drawing.Rectangle(leftBound, upperBound, rightBound - leftBound, lowerBound - upperBound));
@@ -313,7 +315,9 @@ namespace MyPaint.Shape
             int left = x - HANDLE_POINT_RADIUS;
             int upper = y - HANDLE_POINT_RADIUS;
             gr.FillRectangle(Brushes.White, left, upper, 2 * HANDLE_POINT_RADIUS, 2 * HANDLE_POINT_RADIUS);
-            gr.DrawRectangle(Pens.Black, left, upper, 2 * HANDLE_POINT_RADIUS, 2 * HANDLE_POINT_RADIUS);
+            gr.DrawEllipse(Pens.Black, left, upper, 2 * HANDLE_POINT_RADIUS, 2 * HANDLE_POINT_RADIUS);
         }
+
+      
     }
 }

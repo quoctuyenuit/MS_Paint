@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyPaint.FillEvent
+namespace MyPaint.Fill
 {
-    public partial class HatchBrush : Form
+    public partial class HatchBrushForm : Form
     {
         private Color _foreColor;
 
@@ -37,12 +37,12 @@ namespace MyPaint.FillEvent
             set { _hatchStyle = value; }
         }
 
-        public HatchBrush()
+        public HatchBrushForm()
         {
             InitializeComponent();
 
-            cbBackColor.Color = Tools.PaintTools.ColorHatchBrush1;
-            cbForeColor.Color = Tools.PaintTools.ColorHatchBrush2;
+            cbBackColor.Color = Tools.PaintTools.ColorBrush_1;
+            cbForeColor.Color = Tools.PaintTools.ColorBrush_2;
 
             List<HatchStyle> _list = new List<HatchStyle>();
 

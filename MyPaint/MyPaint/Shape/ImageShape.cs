@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPaint.Shape.Frame;
+using MyPaint.Tools;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,15 +10,9 @@ using System.Windows.Forms;
 
 namespace MyPaint.Shape
 {
-    class ImageShape : DrawingFrame
+    class ImageShape : FrameSpace
     {
         private Bitmap currentImage;
-
-        public Bitmap CurrentImage
-        {
-            get { return currentImage; }
-            set { currentImage = value; }
-        }
 
         public ImageShape(Size size, Point p, Bitmap _image)
             : base(size, p)
