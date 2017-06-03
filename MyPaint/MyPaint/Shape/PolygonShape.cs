@@ -13,7 +13,13 @@ namespace MyPaint.Shape
         private List<Point> listPoint;
         private Point startPoint;
         private Point tempPoint;
-        private bool finish;
+        private bool isFinish;
+
+        public bool IsFinish
+        {
+            get { return isFinish; }
+            set { isFinish = value; }
+        }
 
         struct Rate
         {
@@ -36,10 +42,10 @@ namespace MyPaint.Shape
             this.listRate = new List<Rate>();
             this.startPoint = p;
             this.listPoint.Add(startPoint);
-            this.finish = false;
+            this.isFinish = false;
         }
 
-        private bool isFinish(Point _curPoint)
+        private bool checkFinish(Point _curPoint)
         {
             return ((_curPoint.X > startPoint.X - pointRadius && _curPoint.X < startPoint.X + pointRadius)
                                  && (_curPoint.Y > startPoint.Y - pointRadius && _curPoint.Y < startPoint.Y + pointRadius));
@@ -67,7 +73,7 @@ namespace MyPaint.Shape
                             this.drawingMode = checkDrawingMode(_curPoint);
                             this.pivotMove = _curPoint;
 
-                            if (finish)
+                            if (isFinish)
                             {
                                 switch (drawingMode)
                                 {
@@ -200,7 +206,7 @@ namespace MyPaint.Shape
             if (_mouseStatus == DrawingSetting.MoseStatus.Up)
             {
 
-                if(!finish)
+                if(!isFinish)
                 {
 
                     listPoint.Add(new Point() { X = tempPoint.X, Y = tempPoint.Y });
@@ -218,8 +224,8 @@ namespace MyPaint.Shape
                     upperBound = minY;
                     lowerBound = maxY;
 
-                    finish = isFinish(_curPoint);
-                    if(finish)
+                    isFinish = checkFinish(_curPoint);
+                    if(isFinish)
                     {
                         //Lưu lại tỷ lệ các điểm trong hình sau khi vừa vẽ xong
                         foreach (Point p in listPoint)
@@ -270,7 +276,7 @@ namespace MyPaint.Shape
 
                     gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-                    if(finish)
+                    if(isFinish)
                         gr.DrawPolygon(pen, listPoint.ToArray());
                     else
                     {
@@ -285,14 +291,14 @@ namespace MyPaint.Shape
                     }
                 }
             }
-            if(finish)
+            if(isFinish)
                 drawFrame(bmp);
             return bmp;
         }
 
         public override System.Windows.Forms.Cursor checkCursor(Point _curPoint)
         {
-            if (!finish)
+            if (!isFinish)
                 return System.Windows.Forms.Cursors.Cross;
             return base.checkCursor(_curPoint);
         }

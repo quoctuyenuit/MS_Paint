@@ -545,6 +545,7 @@ namespace MyPaint
         private void eraserStyle_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             selectStyle.Checked = false;
+            this.DrawingFrames.embed();
             Tools.PaintTools.EraserWidth = Tools.PaintTools.PenWidth * 10;
             Tools.PaintTools.DrawingTool = Tools.PaintTools.EnumDrawingTool.Eraser;
 
@@ -553,6 +554,11 @@ namespace MyPaint
                 eraserStyle.Checked = true;
             }
             this.currentShape.Image = Resources.eraserIcon;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            
         }
 
        

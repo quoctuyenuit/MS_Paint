@@ -42,11 +42,21 @@ namespace MyPaint.Drawing
             this.MouseMove += MainPanel_MouseMove;
             this.Paint += MainPanel_Paint;
             this.Resize += MainPanel_Resize;
+            this.DoubleClick += DrawingSpace_DoubleClick;
             this.drawingPanel = new DrawingPanel(this, _size);
             this.contentPanel = new ContentPanel(_size.Width, _size.Height);
             this.listBack = new Stack<Bitmap>();
             this.DoubleBuffered = true;
             this.Cursor = Cursors.Cross;
+        }
+
+        void DrawingSpace_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.drawingPanel.ActiveShape is Shape.PolygonShape)
+            {
+                Shape.PolygonShape pl = (Shape.PolygonShape)this.drawingPanel.ActiveShape;
+                pl.IsFinish = true;
+            }
         }
 
 

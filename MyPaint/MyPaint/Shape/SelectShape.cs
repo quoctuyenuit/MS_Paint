@@ -20,6 +20,12 @@ namespace MyPaint.Shape
 
         private Drawing.DrawingSpace drawingSpace;
 
+        private int pLeft;
+        private int pRight;
+        private int pUpper;
+        private int pLower;
+
+
         protected override Bitmap generateImage()
         {
             Bitmap bmp = new Bitmap(surfaceSize.Width, surfaceSize.Height);
@@ -61,14 +67,20 @@ namespace MyPaint.Shape
                             {
                                 this.drawingStatus = DrawingSetting.DrawingStatus.Draw;
                                 this.drawingMode = DrawingSetting.DrawingMode.DownRight;
-                                
+                                this.pLeft = leftBound;
+                                this.pRight = rightBound;
+                                this.pUpper = upperBound;
+                                this.pLower = lowerBound;
                                 break;
                             }
                         case DrawingSetting.DrawingStatus.Free:
                             {
                                 this.drawingStatus = DrawingSetting.DrawingStatus.Adjust;
                                 this.drawingMode = checkDrawingMode(_curPoint);
-                                
+                                this.pLeft = leftBound;
+                                this.pRight = rightBound;
+                                this.pUpper = upperBound;
+                                this.pLower = lowerBound;
                                 this.pivotMove = _curPoint;
                                 switch (drawingMode)
                                 {
@@ -127,26 +139,35 @@ namespace MyPaint.Shape
                             }
                         case DrawingSetting.DrawingMode.UpLeft:
                             {
-                                upperBound = Math.Min(_curPoint.Y, lowerBound - pointRadius);
-                                leftBound = Math.Min(_curPoint.X, rightBound - pointRadius);
+                                upperBound = Math.Min(_curPoint.Y, pLower);
+                                lowerBound = Math.Max(_curPoint.Y, pLower);
+                                leftBound = Math.Min(_curPoint.X, pRight);
+                                rightBound = Math.Max(_curPoint.X, pRight);
+
                                 break;
                             }
                         case DrawingSetting.DrawingMode.DownRight:
                             {
-                                lowerBound = Math.Max(_curPoint.Y, upperBound + pointRadius);
-                                rightBound = Math.Max(_curPoint.X, leftBound + pointRadius);
+                                lowerBound = Math.Max(_curPoint.Y, pUpper);
+                                upperBound = Math.Min(_curPoint.Y, pUpper);
+                                rightBound = Math.Max(_curPoint.X, pLeft);
+                                leftBound = Math.Min(_curPoint.X, pLeft);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.UpRight:
                             {
-                                upperBound = Math.Min(_curPoint.Y, lowerBound - pointRadius);
-                                rightBound = Math.Max(_curPoint.X, leftBound + pointRadius);
+                                upperBound = Math.Min(_curPoint.Y, pLower);
+                                lowerBound = Math.Max(_curPoint.Y, pLower);
+                                rightBound = Math.Max(_curPoint.X, pLeft);
+                                leftBound = Math.Min(_curPoint.X, pLeft);
                                 break;
                             }
                         case DrawingSetting.DrawingMode.DownLeft:
                             {
-                                lowerBound = Math.Max(_curPoint.Y, upperBound + pointRadius);
-                                leftBound = Math.Min(_curPoint.X, rightBound - pointRadius);
+                                lowerBound = Math.Max(_curPoint.Y, pUpper);
+                                upperBound = Math.Max(_curPoint.Y, pUpper);
+                                leftBound = Math.Min(_curPoint.X, pRight);
+                                rightBound = Math.Min(_curPoint.X, pRight);
                                 break;
                             }
                             case DrawingSetting.DrawingMode.Move:

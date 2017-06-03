@@ -15,34 +15,33 @@ namespace MyPaint.Shape
 
         protected Point prePoint;
 
+        protected List<Point> listPrePoint;
+
         protected bool doneStatus;
 
         public FreePen(Size surfaceSize, Point p):base(surfaceSize)
         {
             this.currentShape = new Bitmap(surfaceSize.Width, surfaceSize.Height);
             this.doneStatus = false;
+            this.listPrePoint = new List<Point>();
+            this.prePoint = p;
+            this.listPrePoint.Add(this.prePoint);
         }
 
         public override void updateShape(System.Drawing.Point _curPoint, Tools.DrawingProperties _properties, DrawingSetting.MoseStatus _mouseStatus)
         {
+            drawingProperties = _properties;
             switch(_mouseStatus)
             {
                 case DrawingSetting.MoseStatus.Down:
                     {
-                        this.prePoint.X = _curPoint.X;
-                        this.prePoint.Y = _curPoint.Y;
+                        drawingStatus = DrawingSetting.DrawingStatus.Draw;
                         break;
                     }
                 case DrawingSetting.MoseStatus.Move:
                     {
-                        using (Graphics g = Graphics.FromImage(currentShape))
-                        {
-                            Pen customPen = genratePen(_properties);
-                            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                            g.DrawLine(customPen, prePoint, _curPoint);
-                            prePoint = _curPoint;
-                            break;
-                        }
+                        this.listPrePoint.Add(_curPoint);
+                        break;   
                     }
                 case DrawingSetting.MoseStatus.Up:
                     {
@@ -61,9 +60,50 @@ namespace MyPaint.Shape
             return Cursors.Cross;
         }
 
+        private Bitmap generateImage()
+        {
+            Bitmap bmp = new Bitmap(surfaceSize.Width, surfaceSize.Height);
+
+            if (drawingStatus == DrawingSetting.DrawingStatus.PreDraw)
+                return bmp;
+            else
+            {
+                using (Graphics gr = Graphics.FromImage(bmp))
+                {
+                    Pen pen = genratePen(this.drawingProperties);
+                    pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                    gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+                    if (doneStatus)
+                    {
+                        List<Point> tempList = new List<Point>();
+                        for (int i = 0; i < listPrePoint.Count; i++)
+                            if (i % 2 == 0)
+                                tempList.Add(listPrePoint[i]);
+
+                        if (tempList.Count <= 1)
+                            tempList.Add(new Point() { X = listPrePoint.First().X + 1, Y = listPrePoint.First().Y });
+
+                        gr.DrawCurve(pen, tempList.ToArray(), 0.5f);
+                    }
+                    else
+                    {
+                        if (listPrePoint.Count > 1)
+                            gr.DrawLines(pen, listPrePoint.ToArray());
+                        else
+                            gr.DrawLine(pen, listPrePoint.First(), new Point() { X = listPrePoint.First().X + 1, Y = listPrePoint.First().Y });
+                    
+                    }
+                }
+            }
+
+            return bmp;
+        }
+
         public override System.Drawing.Bitmap CurrentShape
         {
-            get { return currentShape; }
+            get { return generateImage(); }
         }
 
         public override bool DoneStatus
