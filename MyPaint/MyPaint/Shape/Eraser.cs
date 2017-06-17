@@ -32,24 +32,15 @@ namespace MyPaint.Shape
                 {
                     Pen pen = new Pen(Color.White);
                     pen.Width = Tools.PaintTools.EraserWidth;
+                    pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
 
                     gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-                    if (doneStatus)
-                    {
-                        List<Point> tempList = new List<Point>();
-                        for (int i = 0; i < listPrePoint.Count; i++)
-                            if (i % 2 == 0)
-                                tempList.Add(listPrePoint[i]);
-
-                        if (tempList.Count > 1)
-                            gr.DrawCurve(pen, tempList.ToArray(), 0.5f);
-                    }
+                    if (listPrePoint.Count > 1)
+                        gr.DrawLines(pen, listPrePoint.ToArray());
                     else
-                    {
-                        if (listPrePoint.Count > 1)
-                            gr.DrawLines(pen, listPrePoint.ToArray());
-                    }
+                        gr.DrawLine(pen, listPrePoint.First(), new Point(listPrePoint.First().X + 1, listPrePoint.First().Y));
                 }
             }
 
